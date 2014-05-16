@@ -17,10 +17,13 @@ Trello.Routers.Router = Backbone.Router.extend({
   },
 
   boardShow: function(id){
-    var show = new Trello.Views.Board({model: this.boards.get(id)})
-    this._swapView(show)
+    var board = this.boards.get(id);
+    var view = new Trello.Views.Board({
+      model: board,
+      collection: board.get('lists')
+    })
+    this._swapView(view)
   },
-
 
   _swapView: function(view){
     this._currentView && this._currentView.remove();
