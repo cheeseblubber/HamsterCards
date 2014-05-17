@@ -1,6 +1,6 @@
 Trello.Models.List = Backbone.Model.extend({
 
   url: function () {
-    return "api/board/" + this.board.id + "/lists"
+    return "api/boards/" + this.attributes.list.board_id + "/lists"
   }
 });

@@ -4,8 +4,14 @@ Trello.Views.Board = Backbone.View.extend({
   template: JST['boards/show'],
 
   initialize: function(){
-    this.listenTo(this.model, "sync", this.render)
+    this.listenTo(this.collection, 'add sync', this.render)
     this.subViews = [];
+  },
+
+  events: {
+    'submit .add-list': 'addList',
+    'submit .add-member': 'addMember',
+    'click .delete-board': 'deleteBoard'
   },
 
   render: function () {
@@ -14,12 +20,37 @@ Trello.Views.Board = Backbone.View.extend({
       board: that.model
     });
     that.$el.html(content);
-    that.collection.each(function (list) {
+    return this.subRender();
+  },
+
+  //refactor addList and addMember to keep dry
+  addList: function (event) {
+    event.preventDefault();
+    var $form = $(event.target).serializeJSON()
+    this.collection.create($form)
+  },
+
+  addMember: function (event) {
+    debugger
+    event.preventDefault();
+    var $form = $(event.target).serializeJSON()
+
+  },
+
+  //renders composite view of each list
+  subRender: function () {
+    var that = this
+    this.collection.each(function (list) {
       var view = new Trello.Views.ListItem({ model: list });
       that.subViews.push(view);
       that.$el.append(view.render().$el);
     })
-    return this;
+    return this
   },
-})
 
+  deleteBoard: function () {
+    this.model.destroy();
+    Backbone.history.navigate('/#', true)
+  },
+
+})
