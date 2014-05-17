@@ -10,11 +10,11 @@ Trello.Routers.Router = Backbone.Router.extend({
     'boards': "boardsIndex",
     'board/new': 'boardNew',
     'board/:id': 'boardShow',
-    'board/:id/lists/new': 'listNew',
+    // 'board/:id/lists/new': 'listNew',
   },
 
   boardsIndex: function(){
-    var indexView = new Trello.Views.BoardsIndex({collection: boards});
+    var indexView = new Trello.Views.BoardsIndex({collection: this.boards});
     this.$rootEl.html(indexView.render().$el);
   },
 
@@ -34,10 +34,10 @@ Trello.Routers.Router = Backbone.Router.extend({
     this._swapView(view)
   },
 
-  listNew: function (id) {
-    var view = new Trello.Views.NewList();
-    this._swapView(view)
-  },
+  // listNew: function (id) {
+  //   var view = new Trello.Views.NewList();
+  //   this._swapView(view)
+  // },
 
   _swapView: function(view){
     this._currentView && this._currentView.remove();

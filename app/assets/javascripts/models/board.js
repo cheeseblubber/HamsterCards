@@ -3,10 +3,10 @@ Trello.Models.Board = Backbone.Model.extend({
 
   parse: function (response) {
     if(response.lists) {
-      this.lists().set(response.lists)
-      delete(response.lists)
+      this.lists().set(response.lists);
+      delete(response.lists);
     }
-    return this
+    return response
   },
 
   lists: function () {

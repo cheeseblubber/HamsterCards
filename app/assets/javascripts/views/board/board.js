@@ -14,7 +14,7 @@ Trello.Views.Board = Backbone.View.extend({
       board: that.model
     });
     that.$el.html(content);
-    _.each(that.collection, function (list) {
+    that.collection.each(function (list) {
       var view = new Trello.Views.ListItem({ model: list });
       that.subViews.push(view);
       that.$el.append(view.render().$el);
@@ -22,3 +22,4 @@ Trello.Views.Board = Backbone.View.extend({
     return this;
   },
 })
+
