@@ -1,8 +1,19 @@
-
 <h2>
   <%= board.escape('title') %>
 </h2>
+<h1>Create a New List </h1>
+
+<form>
+  <label>Title
+    <input type="text" name="list[title]">
+  </label>
+  <label>rank
+    <input type="text" name="list[rank]">
+  </label>
+    <input type="hidden" name="list[board_id]" value="<%= board.escape("id") %>">
+    <input class='btn' type='Submit'>
+</form>
+
 
 <a href="#">Index Page </a>
-<a href="#/board/<%= board.escape("id") %>/lists/new">Create a New List</a>
 <h3>Lists</h3>
