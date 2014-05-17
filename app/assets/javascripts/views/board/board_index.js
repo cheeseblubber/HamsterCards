@@ -20,7 +20,7 @@ Trello.Views.BoardsIndex = Backbone.View.extend({
 
   add: function(event){
     event.preventDefault();
-    var $form = $('.form').serializeJSON()
+    var $form = $(event.target).serializeJSON()
     var title = $form.board.title
     this.collection.create({
       title: title
