@@ -7,3 +7,5 @@ Trello.Models.Member = Backbone.Model.extend({
     return url;
   },
 });
+
+//this model might be unnesssiary-refactor

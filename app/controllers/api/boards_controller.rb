@@ -21,7 +21,6 @@ module Api
 
     def update
       @board = current_user.boards.find(params[:id])
-
       if params[:newMemberEmail]
         email = params[:newMemberEmail]
         new_member = User.find_by_email(email)
@@ -31,6 +30,7 @@ module Api
       if @board.update_attributes(board_params)
         render partial: "api/boards/board", locals: { board: @board }
       else
+        # render " WHAT THE FUCK"
         render json: { errors: @board.errors.full_messages }, status: 422
       end
     end
