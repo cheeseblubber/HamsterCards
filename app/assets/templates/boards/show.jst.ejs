@@ -14,9 +14,17 @@
         <label>rank
           <input type="text" name="list[rank]">
         </label>
+        <br>
           <input type="hidden" name="list[board_id]" value="<%= board.escape("id") %>">
           <input class='btn' type='Submit'>
       </form>
+      <form class="add-member">
+        <label>Enter the member's Email
+          <input type="text" name="board[newMemberEmail]">
+        </label>
+          <br>
+          <input class='btn' type='Submit'>
+        </form>
     </div>
       <button type="button" class='btn delete-board'>Delete Board</button>
       <br>

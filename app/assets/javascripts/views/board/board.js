@@ -31,9 +31,10 @@ Trello.Views.Board = Backbone.View.extend({
   },
 
   addMember: function (event) {
-    debugger
     event.preventDefault();
     var $form = $(event.target).serializeJSON()
+    var board = new Trello.Models.Board($form)
+    board.save();
 
   },
 
