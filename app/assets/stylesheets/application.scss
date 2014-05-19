@@ -14,3 +14,12 @@
  */
 
 @import "bootstrap";
+
+.lists {
+  list-style: none;
+}
+
+.lists li {
+  width: 300px;
+  display: inline-block;
+}

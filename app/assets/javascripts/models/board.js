@@ -17,4 +17,4 @@ Trello.Models.Board = Backbone.Model.extend({
     return this.get("lists")
   },
 
-})
+});
