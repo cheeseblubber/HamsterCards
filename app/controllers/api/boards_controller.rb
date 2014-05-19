@@ -24,14 +24,21 @@ module Api
       if params[:newMemberEmail]
         email = params[:newMemberEmail]
         new_member = User.find_by_email(email)
+        unless new_member
+            render json: { erros: @board.errors.full_messages }, status: 422
+          end
         new_member && !@board.members.include?(new_member) && @board.members << new_member
-      end
-
-      if @board.update_attributes(board_params)
-        render partial: "api/boards/board", locals: { board: @board }
+        # refactor the render and partial
+        if new_member
+          render partial: "api/boards/board", locals: { board: @board }
+        end
       else
-        # render " WHAT THE FUCK"
-        render json: { errors: @board.errors.full_messages }, status: 422
+        if @board.update_attributes(board_params)
+          render partial: "api/boards/board", locals: { board: @board }
+        else
+          # render " WHAT THE FUCK"
+          render json: { errors: @board.errors.full_messages }, status: 422
+        end
       end
     end
 
@@ -42,7 +49,7 @@ module Api
 
     private
     def board_params
-      params.require(:board).permit(:title)
+      params.require(:board).permit(:title, :newMemberEmail)
     end
   end
 end
