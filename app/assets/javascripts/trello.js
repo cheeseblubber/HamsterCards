@@ -4,10 +4,8 @@ window.Trello = {
   Views: {},
   Routers: {},
   initialize: function () {
-
-
     var $rootEl = $('#content')
-    boards = new Trello.Collections.Boards();
+    var boards = new Trello.Collections.Boards();
     boards.fetch({
       success: function () {
         new Trello.Routers.Router(boards, $rootEl);
@@ -22,71 +20,52 @@ window.Trello = {
 };
 
 Backbone.CompositeView = Backbone.View.extend({
-  // composite views create private helper methods to keep the code dry when
-  //creating subviews
-
-  addSubview: function () {
-    var selectorSubviews =
-      this.subviews()[selector] || (this.subviews()[selector] = []);
-
-      selectorSubViews.push(subview);
-
-      var $selectorEl = this.$(selector);
-      $selectorEl.append(subview.$el);
+  addSubview: function (selector, subview) {
+    this.subviews(selector).push(subview);
+    this.attachSubview(selector, subview.render());
   },
 
-  // attachSubviews
+  attachSubview: function (selector, subview) {
+    this.$(selector).append(subview.$el);
 
-  remove: function () {
-    Backbone.View.prototype.remove.call(this);
-    //remove all dem subviews
-    _(this.subviews()).each(function (selectorSubviews, selector) {
-      _(selectorSubviews).each(function (subview){
-        subview.remove();
+    subview.delegateEvents();
+  },
+
+  attachSubviews: function () {
+    var view = this;
+    _(this.subviews()).each(function (subviews, selector) {
+      view.$(selector).empty();
+      _(subviews).each(function (subview) {
+        view.attachSubview(selector, subview);
       });
     });
   },
 
+  remove: function () {
+    Backbone.View.prototype.remove.call(this);
+    _(this.subviews()).each(function (subviews) {
+      _(subviews).each(function (subview) { subview.remove(); });
+    });
+  },
+
   removeSubview: function (selector, subview) {
-    var selectorSubviews =
-      this.subviews()[selector] || (this.subviews()[selector] = []);
-      //this removes a specific subviews
-    var subviewIndex = selectorSubviews.indexOf(subview)
-    selectorSubviews.splice(subviewIndex, 1);
     subview.remove();
+
+    var subviews = this.subviews(selector);
+    subviews.splice(subviews.indexOf(subview), 1);
   },
 
-  renderSubviews: function () {
-    var view = this;
-
-    _(this.subviews()).each(function (selectorSubviews, selector) {
-      var $selectorEl = view.$(selector);
-      $selectorEl.empty();
-
-      _(selectorSubviews).each(function (subview) {
-        $selectorEl.append(subview.render().$el);
-        subview.delegateEvents();
-      })
-    })
-  },
-
-
-  subViews: function () {
-    if (!this._subviews) {
-      this._subviews = {};
-      //subviews are a hash of subvies that gets appended
-    }
-
+  subviews: function (selector) {
     this._subviews = this._subviews || {};
 
     if (!selector) {
       return this._subviews;
     } else {
-      this._subviews[selector] = this._subview[selector] || [];
+      this._subviews[selector] = this._subviews[selector] || [];
       return this._subviews[selector];
-    };
-  },
-}),
+    }
+  }
+});
 
 $(function() {
   Trello.initialize();
