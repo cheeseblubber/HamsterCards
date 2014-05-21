@@ -17,12 +17,4 @@ Trello.Views.CardIndex = Backbone.View.extend({
     });
     return this;
   },
-  //   var renderContent = view.template({
-  //     card: view.model
-  //   });
-  //
-  //
-  //   this.$el.html(renderContent);
-  //   this.attachSubviews(".cards", );
-  // }
 })

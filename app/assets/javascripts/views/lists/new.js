@@ -20,9 +20,8 @@ Trello.Views.newList = Backbone.View.extend({
     list.save({}, {
       success: function() {
         view.model.lists().add(list);
+				//refactor this to clear out previously filled info another way
         $(event.target).find("input[type=text]").val("")
-        //rerendering clears form
-        // view.render();
       }
     });
   },

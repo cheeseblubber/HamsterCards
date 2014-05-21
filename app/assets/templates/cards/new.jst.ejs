@@ -1,5 +1,4 @@
 <form class="new-card">
-
 	<label>Card Name
 		<input type="text" name="card[title]">
 	</label>
@@ -9,5 +8,6 @@
 	<label>Rank
 		<input type="text" name="card[rank]">
 	</label>
-	<input type="hidden" name="card[list_id]" value="<%= list.id %>">
+	<input type="hidden" name="card[list_id]" value="<%= list.escape("id") %>">
+	<input type="submit" class="btn">Submit</input>
 </form>
