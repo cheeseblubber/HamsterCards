@@ -2,7 +2,7 @@ Trello.Views.BoardsIndex = Backbone.View.extend({
 
   template: JST['boards/index'],
 
-  initialize: function(){
+  initialize: function() {
     this.listenTo(this.collection, 'add sync', this.render)
   },
 
@@ -10,7 +10,7 @@ Trello.Views.BoardsIndex = Backbone.View.extend({
     'submit form': 'add'
   },
 
-  render: function(){
+  render: function () {
     var that = this;
     that.$el.html(that.template({
       boards: that.collection
@@ -18,7 +18,7 @@ Trello.Views.BoardsIndex = Backbone.View.extend({
     return this;
   },
 
-  add: function(event){
+  add: function (event) {
     event.preventDefault();
     var $form = $(event.target).serializeJSON()
     var title = $form.board.title

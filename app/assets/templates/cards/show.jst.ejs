@@ -1,6 +1,5 @@
-<form>
-  <label>Title
-    <input type="text" name="card[title]">
-  </label>
-  <label>Description
-    <input type="">
+<li>
+  Title: <%= card.escape('title') %>
+  <br>
+  Description: <%= card.escape('description') %>
+</li>

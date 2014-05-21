@@ -2,7 +2,7 @@ Trello.Models.Board = Backbone.Model.extend({
   urlRoot: 'api/boards',
 
   parse: function (response) {
-    if(response.lists) {
+    if (response.lists) {
       this.lists().set(response.lists);
       delete(response.lists);
     }

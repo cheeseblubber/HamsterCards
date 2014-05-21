@@ -15,11 +15,35 @@
 
 @import "bootstrap";
 
-.lists {
-  list-style: none;
+body {
+ background: #F0AD4E;
 }
 
+.panel {
+}
+
+.lists {
+	padding-left: 0;
+  list-style: none;
+//	border-style: solid;
+//	border-width: thin;
+	white-space: nowrap;
+	overflow-x: scroll;
+	position: relative;
+
+
+}
+
+
 .lists li {
-  width: 300px;
+  width: 150px;
   display: inline-block;
+	background: white;
+	border-radius: 15px;
+	border-color: #3276B1;
+	border-style: solid;
+	border-width: thick;
+  background-color: rgba(230, 230, 230, 1);
+
+
 }
