@@ -27,13 +27,20 @@ Trello.Views.ListItem = Backbone.CompositeView.extend({
     that.addSubview(".cards-list", cardShow)
   },
 
-  render: function () {
+	renderCardForm: function(list){
+		var that = this
+		var cardFormView = new Trello.Views.CardForm({ list: list})
+		that.addSubview(".card-form", cardFormView)
+	},
 
+  render: function () {
     var content = this.template({
       list: this.model
     });
+
     this.$el.html(content);
-		this.renderCards(this.model)
+		this.renderCards(this.model);
+		this.renderCardForm(this.model);
     return this
   },
 
