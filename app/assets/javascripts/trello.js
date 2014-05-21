@@ -12,7 +12,7 @@ window.Trello = {
         Backbone.history.start();
       },
       error: function () {
-        alert("Failed to fetch(I am in Line 17 of trello.js)")
+        // alert("Failed to fetch(I am in Line 17 of trello.js)")
         console.log('Failed to fetch.');
       }
     });
