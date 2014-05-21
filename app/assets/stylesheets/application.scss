@@ -22,6 +22,11 @@ body {
 .panel {
 }
 
+.lists > div {
+	border-style: solid;
+	border-width: thin;
+}
+
 .lists {
 	padding-left: 0;
   list-style: none;
@@ -29,6 +34,7 @@ body {
 //	border-width: thin;
 	white-space: nowrap;
 	overflow-x: scroll;
+//	overflow-y: auto;
 	position: relative;
 
 
@@ -36,7 +42,6 @@ body {
 
 
 .lists li {
-		float: right;
   width: 150px;
   display: inline-block;
 	background: white;
@@ -45,6 +50,7 @@ body {
 	border-style: solid;
 	border-width: thick;
   background-color: rgba(230, 230, 230, 1);
+	overflow-x: scroll;
 
 
 }
