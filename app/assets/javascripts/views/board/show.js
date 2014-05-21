@@ -21,16 +21,16 @@ Trello.Views.Board = Backbone.CompositeView.extend({
   addList: function (list) {
     var listShow = new Trello.Views.ListItem({ model: list })
     this.addSubview(".lists", listShow);
-    this.renderCards(list)
+    // this.renderCards(list)
   },
 
-  renderCards: function (list) {
-    var that = this
-    var cardCollection = new Trello.Collections.Cards([], { list: list })
-    cardCollection.fetch()
-    var cardShow = new Trello.Views.CardIndex({ collection: cardCollection})
-    that.addSubview(".cards-list", cardShow)
-  },
+  // renderCards: function (list) {
+  //   var that = this
+  //   var cardCollection = new Trello.Collections.Cards([], { list: list })
+  //   cardCollection.fetch()
+  //   var cardShow = new Trello.Views.CardIndex({ collection: cardCollection})
+  //   that.addSubview(".cards-list", cardShow)
+  // },
 
 
   render: function () {
