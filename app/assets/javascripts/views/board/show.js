@@ -4,33 +4,28 @@ Trello.Views.Board = Backbone.CompositeView.extend({
   template: JST['boards/show'],
 
   initialize: function() {
-    // this.listenTo(this.collection, 'sync', this.render)
     this.listenTo(
       this.model.lists(), "add", this.addList
     );
-    // this.subViews = [];
-    var listNewView = new Trello.Views.ListItem({ model: this.model });
-    // adds the list initially
-    var listFormView = new Trello.Views.newList({ model: this.model });
+		//puts form add list form in initialization
+		this.addListForm();
+  },
 
+	// moved this out of initialization
+	addListForm: function () {
+		//used to add the form for list creation at initialization
+		var listNewView = new Trello.Views.ListItem({ model: this.model });
+		var listFormView = new Trello.Views.newList({ model: this.model });
     this.addSubview(".add-list-form", listFormView);
     this.addSubview(".lists", listNewView);
     this.model.lists().each(this.addList.bind(this));
-  },
+	},
 
   addList: function (list) {
     var listShow = new Trello.Views.ListItem({ model: list })
     this.addSubview(".lists", listShow);
-    // this.renderCards(list)
   },
 
-  // renderCards: function (list) {
-  //   var that = this
-  //   var cardCollection = new Trello.Collections.Cards([], { list: list })
-  //   cardCollection.fetch()
-  //   var cardShow = new Trello.Views.CardIndex({ collection: cardCollection})
-  //   that.addSubview(".cards-list", cardShow)
-  // },
 
 
   render: function () {
@@ -47,14 +42,13 @@ Trello.Views.Board = Backbone.CompositeView.extend({
     event.preventDefault();
     var $form = $(event.target).serializeJSON()
     var that = this;
+		//refactor ajax request use BackBone
     $.ajax({
       url: "api/boards/" + this.model.id,
       method: 'PATCH',
       data: $form,
       success: function() {
         Backbone.history.navigate('#/board/' + that.model.id, true)
-      },
-      error: function(response) {
       }
     })
   },
