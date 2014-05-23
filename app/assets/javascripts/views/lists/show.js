@@ -9,6 +9,10 @@ Trello.Views.ListItem = Backbone.CompositeView.extend({
 		"click .delete-list": "deleteList"
 	},
 
+	initialize: function () {
+		this.listenTo(this.model.cards(), 'all', this.render)
+	},
+
 	deleteList: function () {
 		this.model.destroy();
 	},
