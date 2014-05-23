@@ -17,11 +17,14 @@ Trello.Views.CardForm = Backbone.View.extend({
   },
 
 	submit: function(event) {
+		var view = this;
 		event.preventDefault();
 		var params = $(event.currentTarget).serializeJSON();
 		// var card = new Trello.Models.Card(params);
 		// card.save({},params);
-		this.list.cards().create(params)
-
+		this.list.cards().create(params, {
+			success: function() {
+			}
+		})
 	}
 })
