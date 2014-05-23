@@ -7,7 +7,7 @@ Trello.Views.Board = Backbone.CompositeView.extend({
 	events: {
 		"mouseover": "showDeleteList",
 		"click .show-form": "showForm",
-		"click .hide-form": "hideForm"
+		"click .hide-form": "hideForm",
 	},
 
   initialize: function() {
@@ -15,15 +15,8 @@ Trello.Views.Board = Backbone.CompositeView.extend({
     this.listenTo(
       this.model.lists(), "add", this.addList
     );
-		this.listenTo(
-			this.model.lists(), "destroy", this.render
-		);
 		this.model.lists().each(this.addList.bind(this));
   },
-
-	showDeleteList: function () {
-
-	},
 
 	showForm: function () {
 		$(".add-list-form").show()
@@ -41,9 +34,10 @@ Trello.Views.Board = Backbone.CompositeView.extend({
 	},
 
   addList: function (list) {
-    var listShow = new Trello.Views.ListItem({ model: list })
-    this.addSubview(".lists", listShow);
+    var listView = new Trello.Views.ListItem({ model: list })
+    this.addSubview(".lists", listView);
   },
+
 
   render: function () {
     var view = this;
@@ -53,25 +47,6 @@ Trello.Views.Board = Backbone.CompositeView.extend({
 		this.addListForm();
     this.$el.html(renderedContent);
     this.attachSubviews();
-    // this.$(".cards").sortable({
-    //   axis: "y",
-    //   containment: "parent",
-    //   cursor: "move",
-    //   cursorAt: { top: 5 },
-    //   tolerance: "pointer",
-    //   opacity: 0.75,
-    //   revert: true,
-    // });
-    // this.$(".nest-cards").sortable({
-    //   // containment: "parent",
-    //   // cursor: "grab",
-    //   cursor: "move",
-    //   cursorAt: { top: 5 },
-    //   tolerance: "pointer",
-    //   opacity: 0.75,
-    //   revert: true,
-    //
-    // });
     return this;
   },
 

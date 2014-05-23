@@ -3,6 +3,10 @@ Trello.Views.ListItem = Backbone.CompositeView.extend({
 
 	className: 'panel',
 
+	idAttribute: function () {
+		return this.model.id
+	},
+
   template: JST["lists/show"],
 
 	events: {
@@ -17,6 +21,7 @@ Trello.Views.ListItem = Backbone.CompositeView.extend({
 
 	deleteList: function () {
 		this.model.destroy();
+		this.remove();
 	},
 
 	//refactor to remove index views
