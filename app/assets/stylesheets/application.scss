@@ -26,6 +26,11 @@ html {
 
 .navbar {
 	background: #1E6188;
+	border: 0;
+}
+
+.nav-pills {
+	display: inline-block;
 }
 
 #content {
@@ -38,8 +43,20 @@ html {
 	padding: 4px 3px 3px;
 	margin-right: 5px;
 	margin-left: 5px;
+//	display: inline-block;
 }
 
+.card:hover{
+	background-color: #C0C0C0 !important;
+};
+
+.header-bar {
+	height: 30px;
+	overflow: hidden;
+	padding: 5px;
+	position: relative;
+	z-index: 10;
+}
 
 .btn-success {
 	background: linear-gradient(to bottom, #24a828 0, #1b7e1e 100%);
@@ -56,30 +73,17 @@ html {
 	height: 100%;
 }
 
+
 .lists {
 	padding-left: 0;
   list-style: none;
-//	border-style: solid;
-//	border-width: thin;
-	white-space: nowrap;
-	overflow-x: scroll;
 	position: relative;
-	display: block;
 	height: 100%;
-//	overflow-y: auto;
-//	bottom: 20px
 }
 
 ol {
 	padding: 0;
 	height: 100%;
-}
-
-.nest-cards {
-	padding-left: 0;
-}
-
-.card {
 	list-style: none;
 }
 
@@ -88,13 +92,14 @@ ol {
 	font-weight: bold;
 }
 
-.lists li {
+.lists > li {
 	border-bottom: thin solid #B3B3B3;
 //  width: 150px;
 //  display: block;
 	display: inline-block;
 //	overflow-x: scroll;
 	vertical-align: top;
+	list-style: none;
 }
 .card {
 	padding-left: 0;

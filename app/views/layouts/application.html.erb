@@ -7,43 +7,44 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav class="navbar navbar-default">
+  <nav class="header-bar navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
         <a class="navbar-brand" href="#">Trellino</a>
       </div>
-      <ul class="nav navbar-right">
+      <ul class="nav navbar-right nav-pills">
         <li>
           <% if logged_in? %>
-            <%= button_to "Log out", session_url, { method: :delete, class: "btn btn-xs btn-warning" } %>
-          <% end %>
-        </li>
-        <li>
-          <% if logged_in? %>
-      <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#add-member">
-        Add member
-      </button>
-    <div class="modal fade" id="add-member" tableindex="-1" role="dialog" aria-labelleby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">Add Member</h4>
-            <div class="modal-body">
-              <form class="add-member">
-                <label>Enter the member's Email
-                  <input type="text" name="newMemberEmail">
-                </label>
-                  <br>
-                  <input class='btn' type='Submit' >
-                </form>
-              </div>
-            </div>
-          <div>
-        </div>
-      </div>
-    </div>
-  </div>
+					<li>
+				      <button class="btn btn-primary" data-toggle="modal" data-target="#add-member">
+				        Add member
+				      </button>
+				    <div class="modal fade" id="add-member" tableindex="-1" role="dialog" aria-labelleby="myModalLabel" aria-hidden="true">
+				      <div class="modal-dialog">
+				        <div class="modal-content">
+				          <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				          <h4 class="modal-title" id="myModalLabel">Add Member</h4>
+				            <div class="modal-body">
+				              <form class="add-member">
+				                <label>Enter the member's Email
+				                  <input type="text" name="newMemberEmail">
+				                </label>
+				                  <br>
+				                  <input class='btn' type='Submit' >
+				                </form>
+				              </div>
+				            </div>
+				          <div>
+				        </div>
+				      </div>
+				    </div>
+				  </div>
+				</li>
+					<li>
+            <%= button_to "Log out", session_url, { method: :delete, class: "btn btn-warning" } %>
+					</li>
+
           <% end %>
         </li>
 

@@ -18,6 +18,7 @@
 //= require backbone
 //= require bootstrap
 //= require trello
+//= require jquery-sortable
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
