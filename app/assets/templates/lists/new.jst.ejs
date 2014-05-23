@@ -4,11 +4,12 @@
   <label>Title
     <input type="text" name="list[title]">
   </label>
-  <label>rank
+	<input type="hidden" name="list[rank]" value="">
+  <!-- <label>rank
     <input type="text" name="list[rank]">
-  </label>
-
+  </label> -->
     <input type="hidden" name="list[board_id]" value="<%= board.escape('id') %>">
-    <input class='btn' type='Submit'>
+
+    <input class='btn' type='Submit' value="Save">
 </form>
 

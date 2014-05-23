@@ -1,8 +1,13 @@
 Trello.Views.CardIndex = Backbone.View.extend({
+
+	tagName: 'ol',
+
+	className: 'cards-list',
+
   template: JST['cards/index'],
 
-  initialize: function (attribute) {
-    this.listenTo(this.collection, 'sync', this.render)
+  initialize: function () {
+    this.listenTo(this.collection, 'all', this.render)
     this.subViews = [];
   },
 

@@ -1,32 +1,42 @@
 Trello.Views.Board = Backbone.CompositeView.extend({
-  tagName: 'ol',
+
+	className: 'board',
 
   template: JST['boards/show'],
 
+	events: {
+		"click .show-form": "showForm",
+		"click .hide-form": "hideForm"
+	},
+
   initialize: function() {
+		this.listenTo(this.model, "change", this.render);
     this.listenTo(
       this.model.lists(), "add", this.addList
     );
-		//puts form add list form in initialization
 		this.addListForm();
+		this.model.lists().each(this.addList.bind(this));
   },
 
-	// moved this out of initialization
+	showForm: function () {
+		$(".add-list-form").show()
+	},
+
+	hideForm: function () {
+		$(".add-list-form").hide()
+	},
+
+
+	// called at initialization
 	addListForm: function () {
-		//used to add the form for list creation at initialization
-		var listNewView = new Trello.Views.ListItem({ model: this.model });
 		var listFormView = new Trello.Views.newList({ model: this.model });
     this.addSubview(".add-list-form", listFormView);
-    this.addSubview(".lists", listNewView);
-    this.model.lists().each(this.addList.bind(this));
 	},
 
   addList: function (list) {
     var listShow = new Trello.Views.ListItem({ model: list })
     this.addSubview(".lists", listShow);
   },
-
-
 
   render: function () {
     var view = this;
