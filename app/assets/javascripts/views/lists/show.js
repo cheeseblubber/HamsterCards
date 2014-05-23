@@ -5,12 +5,13 @@ Trello.Views.ListItem = Backbone.CompositeView.extend({
 
   template: JST["lists/show"],
 
-  initialize: function () {
-    // this.listenTo(this.model, "sync", this.render);
+	events: {
+		"click .delete-list": "deleteList"
+	},
 
-		// this.cardCollection = new Trello.Collections.Cards([], { list: this.model })
-		// this.listenTo(this.cardCollection, "all", this.render);
-  },
+	deleteList: function () {
+		this.model.destroy();
+	},
 
 	// move this to board class because of rerendering problems
   renderCards: function (list) {
@@ -28,7 +29,7 @@ Trello.Views.ListItem = Backbone.CompositeView.extend({
 	},
 
   render: function () {
-	    var content = this.template({
+		var content = this.template({
       list: this.model
     });
     this.$el.html(content);

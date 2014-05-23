@@ -6,6 +6,9 @@ Trello.Views.CardIndex = Backbone.View.extend({
 
   template: JST['cards/index'],
 
+	// event: {
+	// 	"mouseover"
+	// }
   initialize: function () {
     this.listenTo(this.collection, 'all', this.render)
     this.subViews = [];
