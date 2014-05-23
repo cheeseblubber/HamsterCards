@@ -58,6 +58,20 @@ html {
 	z-index: 10;
 }
 
+.hidden {
+	display: none;
+}
+
+.float-right-button {
+	float: right;
+	height: 18px;
+	font-size: 12px;
+	line-height: 18px;
+	width: 18px;
+}
+
+
+
 .btn-success {
 	background: linear-gradient(to bottom, #24a828 0, #1b7e1e 100%);
 	background-image: linear-gradient(rgb(36, 168, 40) 0px, rgb(27, 126, 30) 100%);
