@@ -34,17 +34,16 @@ html {
   overflow: auto;
 }
 
-//.panel:hover {
-//  background-color: rgba(246, 246, 246, 1);
-//}
 
-//.lists > div {
-//	border-style: solid;
-//	border-width: thin;
-//}
-//
-.board {
-//	height: 100%;
+.btn-success {
+	background: linear-gradient(to bottom, #24a828 0, #1b7e1e 100%);
+	background-image: linear-gradient(rgb(36, 168, 40) 0px, rgb(27, 126, 30) 100%);
+	font: 14px "Helvetica Neue",Arial,Helvetica,sans-serif;
+	padding: 5px 18px;
+	padding-top: 5px;
+	padding-right: 18px;
+	padding-bottom: 5px;
+	padding-left: 18px;
 }
 
 .items {
