@@ -1,5 +1,7 @@
 Trello.Views.CardItem = Backbone.View.extend({
 
+	tagName: 'li',
+
   template: JST["cards/show"],
 
 	className: 'card',

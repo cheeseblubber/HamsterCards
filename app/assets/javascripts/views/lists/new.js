@@ -2,8 +2,14 @@ Trello.Views.newList = Backbone.View.extend({
   template: JST["lists/new"],
 
   events: {
-    "submit form": "submit",
-  },
+    // "submit form": "submit",
+  	"click .save": "save",
+		"click .cancel": "cancel",
+	},
+
+	cancel: function () {
+
+	},
 
   render: function (){
     var renderedContent = this.template({ board: this.model });
@@ -11,7 +17,7 @@ Trello.Views.newList = Backbone.View.extend({
     return this;
   },
 
-  submit: function (event) {
+  save: function (event) {
     var view = this;
     event.preventDefault();
 

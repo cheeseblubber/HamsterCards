@@ -3,8 +3,12 @@ Trello.Collections.Cards = Backbone.Collection.extend({
   model: Trello.Models.Card,
 
   initialize: function (models, options) {
-    this.list = options.list
+	  this.list = options.list
   },
+
+	comparator: function (cards) {
+		return cards.get("rank")
+	},
 
   url: function () {
 

@@ -33,8 +33,10 @@ Backbone.CompositeView = Backbone.View.extend({
 
   attachSubviews: function () {
     var view = this;
+
     _(this.subviews()).each(function (subviews, selector) {
       view.$(selector).empty();
+
       _(subviews).each(function (subview) {
         view.attachSubview(selector, subview);
       });
@@ -65,8 +67,4 @@ Backbone.CompositeView = Backbone.View.extend({
       return this._subviews[selector];
     }
   }
-});
-
-$(function() {
-  Trello.initialize();
 });

@@ -13,12 +13,10 @@ Trello.Models.List = Backbone.Model.extend({
   },
 
   cards: function () {
-    if(!this.get('cards')) {
-      var collection = new Trello.Collections.Cards([], { list: this });
-      this.set("cards", collection)
+    if(!this._cards) {
+      this._cards = new Trello.Collections.Cards([], { list: this });
     }
-    return this.get("cards")
+    return this._cards
   },
-
 });
 
