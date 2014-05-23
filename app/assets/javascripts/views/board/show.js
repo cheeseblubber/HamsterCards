@@ -62,16 +62,16 @@ Trello.Views.Board = Backbone.CompositeView.extend({
     //   opacity: 0.75,
     //   revert: true,
     // });
-    this.$(".nest-cards").sortable({
-      // containment: "parent",
-      // cursor: "grab",
-      cursor: "move",
-      cursorAt: { top: 5 },
-      tolerance: "pointer",
-      opacity: 0.75,
-      revert: true,
-
-    });
+    // this.$(".nest-cards").sortable({
+    //   // containment: "parent",
+    //   // cursor: "grab",
+    //   cursor: "move",
+    //   cursorAt: { top: 5 },
+    //   tolerance: "pointer",
+    //   opacity: 0.75,
+    //   revert: true,
+    //
+    // });
     return this;
   },
 

@@ -10,6 +10,8 @@ Trello.Views.ListItem = Backbone.CompositeView.extend({
 	},
 
 	initialize: function () {
+		// instead of rendering every time refactor this
+		// to use sync and subviews
 		this.listenTo(this.model.cards(), 'all', this.render)
 	},
 
@@ -17,7 +19,7 @@ Trello.Views.ListItem = Backbone.CompositeView.extend({
 		this.model.destroy();
 	},
 
-	// move this to board class because of rerendering problems
+	//refactor to remove index views
   renderCards: function (list) {
     var that = this
     var cardCollection = new Trello.Collections.Cards([], { list: list })
@@ -37,7 +39,6 @@ Trello.Views.ListItem = Backbone.CompositeView.extend({
       list: this.model
     });
     this.$el.html(content);
-		//move these to board class
 		this.renderCards(this.model);
 		this.renderCardForm(this.model);
     return this
