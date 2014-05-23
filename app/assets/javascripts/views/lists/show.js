@@ -29,6 +29,7 @@ Trello.Views.ListItem = Backbone.CompositeView.extend({
     var that = this
     var cardCollection = new Trello.Collections.Cards([], { list: list })
     cardCollection.fetch()
+		//problem is this fetch here the list doesn't have an id yet
     var cardShow = new Trello.Views.CardIndex({ collection: cardCollection})
     that.addSubview(".cards-list", cardShow)
   },

@@ -43,7 +43,6 @@ html {
 	padding: 4px 3px 3px;
 	margin-right: 5px;
 	margin-left: 5px;
-//	display: inline-block;
 }
 
 .card:hover{
@@ -93,12 +92,17 @@ html {
   list-style: none;
 	position: relative;
 	height: 100%;
+
 }
 
 ol {
 	padding: 0;
 	height: 100%;
 	list-style: none;
+	white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+
 }
 
 
@@ -108,10 +112,8 @@ ol {
 
 .lists > li {
 	border-bottom: thin solid #B3B3B3;
-//  width: 150px;
-//  display: block;
 	display: inline-block;
-//	overflow-x: scroll;
+	overflow-x: scroll;
 	vertical-align: top;
 	list-style: none;
 }
