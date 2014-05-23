@@ -11,10 +11,11 @@ Trello.Views.Board = Backbone.CompositeView.extend({
 	},
 
   initialize: function() {
-		this.listenTo(this.model, "change", this.render);
     this.listenTo(
       this.model.lists(), "add", this.addList
     );
+		this.listenTo(this.model, "change", this.render);
+
 		this.model.lists().each(this.addList.bind(this));
   },
 
