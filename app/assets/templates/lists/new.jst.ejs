@@ -1,11 +1,11 @@
 <form>
-    <input type="text" name="list[title]" placeholder="Add a list...">
+    <input type="text" id="title" name="list[title]" placeholder="Add a list...">
 	<input type="hidden" name="list[rank]" value="">
-  <!-- <label>rank
+  <label>rank
     <input type="text" name="list[rank]">
-  </label> -->
-    <input type="hidden" name="list[board_id]" value="<%= board.escape('id') %>">
+  </label>
+     <input type="hidden" name="list[board_id]" value="<%= board.escape('id') %>">
 
-    <input class='btn btn-success' type='Submit' value="Save">
+    <input class='btn btn-success save' type='Submit' value="Save">
 </form>
 
