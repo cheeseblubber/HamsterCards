@@ -35,6 +35,7 @@ Trello.Views.Board = Backbone.CompositeView.extend({
 	},
 
   addList: function (list) {
+		//the list might be a board actually it probably is
     var listView = new Trello.Views.ListItem({ model: list })
     this.addSubview(".lists", listView);
   },
@@ -42,7 +43,7 @@ Trello.Views.Board = Backbone.CompositeView.extend({
 
   listSortable: function(){
     var that = this;
-    this.$el.find('.lists').sortable({
+    this.$el.find('.cards').sortable({
       axis: 'x,y',
       // placeholder: 'ui-sortable-placeholder',
       forcePlaceholderSize: true,
