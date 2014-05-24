@@ -10,17 +10,20 @@ Trello.Views.ListItem = Backbone.CompositeView.extend({
   template: JST["lists/show"],
 
 	events: {
-		"click .delete-list": "deleteList"
+		"click .delete-list": "deleteList",
+		"click .float-right-button": "deleteCard",
+
 	},
 
 	initialize: function () {
-		// this.cards = this.model.cards()
-		// instead of rendering every time refactor this
-		// to use sync and subviews
-		this.listenTo(this.model.cards(), 'add', this.addCard)
-		// this.cards.fetch();
+		this.cards = this.model.cards()
+
+		this.listenTo(
+			this.cards, 'add', this.addCard
+		);
+		this.listenTo(this.cards, 'remove', this.render)
+		this.listenTo(this.model, 'all', this.render);
 		this.addCardForm(this.model);
-		// this.cards.each(this.addCard.bind(this));
 	},
 
 	deleteList: function () {
@@ -28,30 +31,45 @@ Trello.Views.ListItem = Backbone.CompositeView.extend({
 		this.remove();
 	},
 
-	addCard: function(list){
+	addCard: function (list) {
 		var cardView = new Trello.Views.CardItem({ model: list})
 		this.addSubview(".cards-list", cardView)
 	},
 
-
-	//refactor to remove index views
-  // renderCards: function (list) {
-  //   var that = this
-  //   var cardCollection = new Trello.Collections.Cards([], { list: list })
-  //   cardCollection.fetch()
-  // 		//problem is this fetch here the list doesn't have an id yet
-  //   var cardShow = new Trello.Views.CardIndex({ collection: cardCollection})
-  //   that.addSubview(".cards-list", cardShow)
-  // },
+	// removeCard: function () {
+	// 	this.removeSubview(".card", )
+	// },
 
   renderCards: function (list) {
     var that = this
-    var cardCollection = this.model.cards();
+    var cardCollection = this.cards;
     cardCollection.fetch()
 		cardCollection.each(this.addCard.bind(this))
     // var cardShow = new Trello.Views.CardIndex({ collection: cardCollection})
     // that.addSubview(".cards-list", cardShow)
   },
+
+	deleteCard: function () {
+		var cardID = $(event.target).attr("id");
+		var cardToDelete = this.cards.get(cardID);
+    //not using destroy because url is fucked up
+		//comeback to refactor
+		$.ajax({
+      url: "api/cards/" + cardID,
+      method: 'DELETE',
+    })
+		// removes subview without having to do a listenTo event
+		var subview = _.find(
+			this.subviews(".cards-list"),
+			function (subview) {
+				return subview.model === cardToDelete
+			}
+		)
+
+
+		this.removeSubview('.card', subview)
+
+	},
 
 
 	addCardForm: function(list){
@@ -65,7 +83,6 @@ Trello.Views.ListItem = Backbone.CompositeView.extend({
       list: this.model
     });
     this.$el.html(renderedContent);
-		// debugger
 		this.renderCards(this.model)
 		this.attachSubviews();
     return this

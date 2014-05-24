@@ -14,13 +14,12 @@ Trello.Views.CardItem = Backbone.View.extend({
 		"mouseover": "showFeatures",
 		"mouseleave": "hideFeatures",
 		"click .card": "showModal",
-		"click .float-right-button": "deleteCard",
+		// "click .float-right-button": "deleteCard",
 	},
 
 	render: function () {
     var content = this.template({ card: this.model });
     this.$el.html(content);
-
     return this;
   },
 
@@ -42,7 +41,8 @@ Trello.Views.CardItem = Backbone.View.extend({
       url: "api/cards/" + this.model.id,
       method: 'DELETE',
     })
-		this.model.destroy()
+		// debugger
+		// this.model.destroy()
 	},
 
 })

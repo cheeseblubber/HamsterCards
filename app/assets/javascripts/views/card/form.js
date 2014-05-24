@@ -20,7 +20,9 @@ Trello.Views.CardForm = Backbone.View.extend({
 		var view = this;
 		event.preventDefault();
 		var params = $(event.currentTarget).serializeJSON();
-		debugger
-		this.list.cards().create(params, {})
+		this.list.cards().create(params, {
+			// without wait true card will not initially render
+			wait: true
+		})
 	}
 })

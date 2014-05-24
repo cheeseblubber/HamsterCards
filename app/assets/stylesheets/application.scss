@@ -43,7 +43,7 @@ html {
 	padding: 4px 3px 3px;
 	margin-right: 5px;
 	margin-left: 5px;
-		background-color: #DBDBDB;
+	background-color: #DBDBDB;
 }
 
 
@@ -100,6 +100,7 @@ ol {
 	white-space: nowrap;
   overflow-x: scroll;
   overflow-y: hidden;
+
 }
 
 // Cards
@@ -107,6 +108,7 @@ ol {
 
 .card-title {
 	font-weight: bold;
+//	background-color: #DBDBDB;
 }
 
 .lists > li {
@@ -132,9 +134,9 @@ ol {
 
 }
 //
-//.cards-list {
-//	padding-bottom: 100p;
-//}
+.cards-list {
+	padding-bottom: 100p;
+}
 
 .card:hover{
 	background-color: #C0C0C0 !important;
