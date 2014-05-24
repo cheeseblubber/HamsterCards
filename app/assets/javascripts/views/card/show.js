@@ -6,6 +6,10 @@ Trello.Views.CardItem = Backbone.View.extend({
 
 	className: 'card',
 
+	id: function () {
+		return this.model.id
+	},
+
 	events: {
 		"mouseover": "showFeatures",
 		"mouseleave": "hideFeatures",
@@ -15,17 +19,16 @@ Trello.Views.CardItem = Backbone.View.extend({
 	render: function () {
     var content = this.template({ card: this.model });
     this.$el.html(content);
+
     return this;
   },
 
 	showFeatures: function () {
-		//this is a view and has
-		//this.model which is the card and has the attribute list_id'
-		$('#'+ this.model.id).removeClass('hidden')
+		$(".close").removeClass('hidden')
 	},
 
 	hideFeatures: function () {
-		$('#'+ this.model.id).addClass('hidden')
+		$(".close").addClass('hidden')
 	},
 
 	deleteCard: function () {

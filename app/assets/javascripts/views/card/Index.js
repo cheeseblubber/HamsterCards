@@ -23,6 +23,7 @@ Trello.Views.CardIndex = Backbone.View.extend({
       that.subViews.push(view);
       that.$el.append(view.render().$el);
     });
+
     return this;
   },
 })
