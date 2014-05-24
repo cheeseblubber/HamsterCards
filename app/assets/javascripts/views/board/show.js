@@ -40,6 +40,25 @@ Trello.Views.Board = Backbone.CompositeView.extend({
   },
 
 
+  listSortable: function(){
+    var that = this;
+    this.$el.find('.lists').sortable({
+      axis: 'x,y',
+      // placeholder: 'ui-sortable-placeholder',
+      forcePlaceholderSize: true,
+      start: function(event, ui){
+        $(ui.item).toggleClass('dragged');
+      },
+      stop: function(event, ui){
+        $(ui.item).toggleClass('dragged');
+      },
+      // update: function (event) {
+      //   var ids = $(event.target).sortable('toArray', { attribute: "data-id" });
+      //   that.updateListRanks(ids);
+      // },
+    })
+  },
+
   render: function () {
     var view = this;
     var renderedContent = this.template({
@@ -48,6 +67,7 @@ Trello.Views.Board = Backbone.CompositeView.extend({
 		this.addListForm();
     this.$el.html(renderedContent);
     this.attachSubviews();
+		this.listSortable()
     return this;
   },
 

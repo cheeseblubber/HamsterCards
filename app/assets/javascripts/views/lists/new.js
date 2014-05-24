@@ -30,7 +30,6 @@ Trello.Views.newList = Backbone.CompositeView.extend({
 			success: function () {
 			},
 			wait: true
-
 		});
   },
 
