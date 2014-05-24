@@ -39,15 +39,14 @@ html {
   overflow: auto;
 }
 
-.panel {
+.list {
 	padding: 4px 3px 3px;
 	margin-right: 5px;
 	margin-left: 5px;
+		background-color: #DBDBDB;
 }
 
-.card:hover{
-	background-color: #C0C0C0 !important;
-};
+
 
 .header-bar {
 	height: 30px;
@@ -92,7 +91,6 @@ html {
   list-style: none;
 	position: relative;
 	height: 100%;
-
 }
 
 ol {
@@ -103,6 +101,8 @@ ol {
   overflow-x: scroll;
   overflow-y: hidden;
 }
+
+// Cards
 
 
 .card-title {
@@ -119,7 +119,26 @@ ol {
 .card {
 	padding-left: 0;
 	border-bottom: thin solid #B3B3B3;
+	background-color: #FFFFFF;
+	padding: 6px 8px 10px;
+	position: relative;
+	z-index: 10;
+	cursor: pointer;
+	font: 14px "Helvetica Neue",Arial,Helvetica,sans-serif;
+	line-height: 18px;
+	color: #393939;
+//	border: 2px solid;
+	border-radius: 7px;
+
 }
+//
+//.cards-list {
+//	padding-bottom: 100p;
+//}
+
+.card:hover{
+	background-color: #C0C0C0 !important;
+};
 // Moving annimation
 //.cards-list, #cloned_items {
 //    list-style: none;
