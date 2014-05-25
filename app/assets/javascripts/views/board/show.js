@@ -81,8 +81,6 @@ Trello.Views.Board = Backbone.CompositeView.extend({
 	// called at initialization
 	addListForm: function () {
 		var listFormView = new Trello.Views.newList({ model: this.model });
-		// debugger
-		// this.list
     this.addSubview(".add-list-form", listFormView);
 	},
 
@@ -93,23 +91,23 @@ Trello.Views.Board = Backbone.CompositeView.extend({
   },
 
 
-  listSortable: function(){
-    // var that = this;
-    // this.$el.find('.cards').sortable({
-    //   axis: 'x,y',
-    //   // placeholder: 'ui-sortable-placeholder',
-    //   forcePlaceholderSize: true,
-    //   start: function(event, ui){
-    //     $(ui.item).toggleClass('dragged');
-    //   },
-    //   stop: function(event, ui){
-    //     $(ui.item).toggleClass('dragged');
-    //   },
-    //   // update: function (event) {
-    //   //   var ids = $(event.target).sortable('toArray', { attribute: "data-id" });
-    //   //   that.updateListRanks(ids);
-    //   // },
-    // })
+  cardsSortable: function(){
+    var that = this;
+    this.$el.find('.cards-list').sortable({
+      axis: 'x,y',
+      // placeholder: 'ui-sortable-placeholder',
+      // forcePlaceholderSize: true,
+      // start: function(event, ui){
+      //   $(ui.item).toggleClass('dragged');
+      // },
+      // stop: function(event, ui){
+      //   $(ui.item).toggleClass('dragged');
+      // },
+      // update: function (event) {
+      //   var ids = $(event.target).sortable('toArray', { attribute: "data-id" });
+      //   that.updateListRanks(ids);
+      // },
+    })
   },
 
   render: function () {
@@ -119,8 +117,8 @@ Trello.Views.Board = Backbone.CompositeView.extend({
     });
     this.$el.html(renderedContent);
     this.attachSubviews();
-				this.addListForm();
-		this.listSortable()
+		this.addListForm();
+		this.cardsSortable()
     return this;
   },
 

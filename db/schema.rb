@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130708183619) do
+ActiveRecord::Schema.define(version: 20140525050040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,17 @@ ActiveRecord::Schema.define(version: 20130708183619) do
     t.datetime "updated_at"
     t.integer  "list_id"
   end
+
+  create_table "comments", force: true do |t|
+    t.string   "body"
+    t.integer  "card_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["card_id"], name: "index_comments_on_card_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "lists", force: true do |t|
     t.string   "title",      null: false
