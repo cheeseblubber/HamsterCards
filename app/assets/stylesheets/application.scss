@@ -48,6 +48,9 @@ html {
 
 
 
+
+
+
 .header-bar {
 	height: 30px;
 	overflow: hidden;
@@ -115,7 +118,6 @@ ol {
 	overflow-x: scroll;
 	vertical-align: top;
 	list-style: none;
-//	background-color:#B3B3B3;
 }
 .card {
 	padding-left: 0;
@@ -174,3 +176,11 @@ textarea {
 //	border: none;
 }
 
+
+.panel {
+	background-color: #DBDBDB;
+}
+
+.glyphicon {
+	color: #B3B3B3;
+}

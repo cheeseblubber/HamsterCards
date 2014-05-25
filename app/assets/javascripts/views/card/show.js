@@ -31,7 +31,7 @@ Trello.Views.CardItem = Backbone.View.extend({
 	},
 
 	showModal: function () {
-		console.log("i m clicking it")
+
 	},
 	// Moved this out to list
 	// deleteCard: function () {

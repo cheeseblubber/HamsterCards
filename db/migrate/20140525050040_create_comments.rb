@@ -6,7 +6,6 @@ class CreateComments < ActiveRecord::Migration
       t.integer :user_id
       t.timestamps
     end
-
     add_index :comments, :card_id
     add_index :comments, :user_id
   end
