@@ -19,10 +19,36 @@ Trello.Views.CardForm = Backbone.View.extend({
 	submit: function(event) {
 		var view = this;
 		event.preventDefault();
-		var params = $(event.currentTarget).serializeJSON();
-		this.list.cards().create(params, {
+		var data = { card: {
+			title: this.$('.title').val(),
+			description: this.$('.description').val(),
+			rank: (this.list.cards().length + 1),
+			list_id: this.list.id,
+		}}
+		// var params = $(event.currentTarget).serializeJSON();
+		// debugger
+		this.list.cards().create(data, {
 			// without wait true card will not initially render
-			wait: true
+			wait: true,
+			success: function () {
+
+			}
 		})
 	}
 })
+
+// save: function (event) {
+//   var view = this;
+//   event.preventDefault();
+// 		var data = {
+// 		title: this.$('#title').val(),
+// 		rank: (this.model.lists().length + 1),
+// 		board_id: this.model.id,
+// 	};
+// 	var list = new Trello.Models.List(data)
+// 	this.model.lists().create(list, {
+// 		success: function () {
+// 		},
+// 		wait: true
+// 	});
+// },

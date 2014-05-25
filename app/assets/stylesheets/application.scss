@@ -90,12 +90,14 @@ html {
   list-style: none;
 	position: relative;
 	height: 100%;
+
 }
 
 ol {
 	padding: 0;
 	height: 100%;
 	list-style: none;
+	// these two lines are whats makes it scrolly left
 	white-space: nowrap;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -113,6 +115,7 @@ ol {
 	overflow-x: scroll;
 	vertical-align: top;
 	list-style: none;
+//	background-color:#B3B3B3;
 }
 .card {
 	padding-left: 0;
@@ -150,6 +153,7 @@ ol {
 	text-decoration: none;
 	cursor: pointer;
 	font: 14px/18px "Helvetica Neue",Arial,Helvetica,sans-serif;
+
 }
 
 .open-list-composer {
@@ -159,6 +163,7 @@ ol {
 	line-height: 18px;
 	padding: 7px;
 	color: rgba(255,255,255,0.7);
+	background-color: #1F648C;
 //	-webkit-transition: color 85ms ease-in;
 //	transition: color 85ms ease-in;
 }

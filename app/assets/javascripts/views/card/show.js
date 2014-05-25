@@ -13,7 +13,7 @@ Trello.Views.CardItem = Backbone.View.extend({
 	events: {
 		"mouseover": "showFeatures",
 		"mouseleave": "hideFeatures",
-		"click .card": "showModal",
+		"click": "showModal",
 	},
 
 	render: function () {
@@ -33,15 +33,15 @@ Trello.Views.CardItem = Backbone.View.extend({
 	showModal: function () {
 		console.log("i m clicking it")
 	},
-
-	deleteCard: function () {
-		//hacked because of routes are different for different Create and delete
-    $.ajax({
-      url: "api/cards/" + this.model.id,
-      method: 'DELETE',
-    })
-		// debugger
-		// this.model.destroy()
-	},
+	// Moved this out to list
+	// deleteCard: function () {
+	// 	//hacked because of routes are different for different Create and delete
+	//     $.ajax({
+	//       url: "api/cards/" + this.model.id,
+	//       method: 'DELETE',
+	//     })
+	// 	// debugger
+	// 	// this.model.destroy()
+	// },
 
 })
