@@ -5,9 +5,11 @@ Trello.Views.Board = Backbone.CompositeView.extend({
   template: JST['boards/show'],
 
 	events: {
+		"click": "insideTheForm",
 		"mouseover": "showDeleteList",
 		"click .show-form": "showForm",
 		"click .hide-form": "hideForm",
+		"click .open-list-composer": "showAddListForm"
 	},
 
   initialize: function() {
@@ -15,7 +17,6 @@ Trello.Views.Board = Backbone.CompositeView.extend({
       this.model.lists(), "add", this.addList
     );
 		this.listenTo(this.model, "change", this.render);
-
 		this.model.lists().each(this.addList.bind(this));
   },
 
@@ -27,10 +28,61 @@ Trello.Views.Board = Backbone.CompositeView.extend({
 		$(".add-list-form").hide()
 	},
 
+	// hideAndReveal: function () {
+	// 	this.hideHideables();
+	// 	// this.revealRevealables();
+	// },
+
+	insideTheForm: function () {
+		var parentIsForm = $(event.target).parents().is('form');
+		if( !parentIsForm){
+			this.hideAndReveal();
+		}
+	},
+
+	//refactor
+	hideAndReveal: function () {
+		var noneActive = $('.active').length === 0
+		if(noneActive){
+			$('.revealable').toggleClass('hidden')
+			$('.revealable').removeClass('revealable')
+		}
+
+		var $hideables = $('.hideable')
+		_.each($hideables, function (element) {
+			var classes = element.className
+			var revealed = classes.indexOf('hidden') === -1
+			var active = classes.indexOf('active') != -1
+			if(revealed && !active) {
+				element.classList.toggle('hidden')
+			}
+			if(active){
+				element.classList.toggle('active')
+			}
+		})
+		// $('.hideable'))
+	},
+
+	// revealRevealables: function () {
+	// 	var noneActive = $('.active').length === 0
+	// 	if(noneActive){
+	// 		debugger
+	// 		$('.revealable').removeClass('revealable');
+	// 	}
+	// },
+
+	showAddListForm: function() {
+		$(event.target).toggleClass('hidden');
+		$(event.target).toggleClass('revealable');
+		$('.add-list').toggleClass('hidden');
+		$('.add-list').toggleClass('active');
+	},
 
 	// called at initialization
 	addListForm: function () {
 		var listFormView = new Trello.Views.newList({ model: this.model });
+		// debugger
+		// this.list
     this.addSubview(".add-list-form", listFormView);
 	},
 
@@ -42,22 +94,22 @@ Trello.Views.Board = Backbone.CompositeView.extend({
 
 
   listSortable: function(){
-    var that = this;
-    this.$el.find('.cards').sortable({
-      axis: 'x,y',
-      // placeholder: 'ui-sortable-placeholder',
-      forcePlaceholderSize: true,
-      start: function(event, ui){
-        $(ui.item).toggleClass('dragged');
-      },
-      stop: function(event, ui){
-        $(ui.item).toggleClass('dragged');
-      },
-      // update: function (event) {
-      //   var ids = $(event.target).sortable('toArray', { attribute: "data-id" });
-      //   that.updateListRanks(ids);
-      // },
-    })
+    // var that = this;
+    // this.$el.find('.cards').sortable({
+    //   axis: 'x,y',
+    //   // placeholder: 'ui-sortable-placeholder',
+    //   forcePlaceholderSize: true,
+    //   start: function(event, ui){
+    //     $(ui.item).toggleClass('dragged');
+    //   },
+    //   stop: function(event, ui){
+    //     $(ui.item).toggleClass('dragged');
+    //   },
+    //   // update: function (event) {
+    //   //   var ids = $(event.target).sortable('toArray', { attribute: "data-id" });
+    //   //   that.updateListRanks(ids);
+    //   // },
+    // })
   },
 
   render: function () {
@@ -65,9 +117,9 @@ Trello.Views.Board = Backbone.CompositeView.extend({
     var renderedContent = this.template({
       board: this.model
     });
-		this.addListForm();
     this.$el.html(renderedContent);
     this.attachSubviews();
+				this.addListForm();
 		this.listSortable()
     return this;
   },

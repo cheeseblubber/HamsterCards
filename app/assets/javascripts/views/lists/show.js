@@ -12,16 +12,14 @@ Trello.Views.ListItem = Backbone.CompositeView.extend({
 	events: {
 		"click .delete-list": "deleteList",
 		"click .float-right-button": "deleteCard",
-
+		"click .open-card-composer": "showAddCardForm"
 	},
 
 	initialize: function () {
 		this.cards = this.model.cards()
-
 		this.listenTo(
 			this.cards, 'add', this.addCard
 		);
-		this.listenTo(this.cards, 'remove', this.render)
 		this.listenTo(this.model, 'all', this.render);
 		this.addCardForm(this.model);
 	},
@@ -36,17 +34,19 @@ Trello.Views.ListItem = Backbone.CompositeView.extend({
 		this.addSubview(".cards-list", cardView)
 	},
 
-	// removeCard: function () {
-	// 	this.removeSubview(".card", )
-	// },
+	showAddCardForm: function () {
+		// $('#'+ this.model.id).show()
+		$("#" + this.model.id).toggleClass("active")
+		$('#' + this.model.id).toggleClass('hidden')
+		$(event.target).toggleClass("hidden")
+		$(event.target).toggleClass("revealable")
+	},
 
   renderCards: function (list) {
     var that = this
     var cardCollection = this.cards;
     cardCollection.fetch()
 		cardCollection.each(this.addCard.bind(this))
-    // var cardShow = new Trello.Views.CardIndex({ collection: cardCollection})
-    // that.addSubview(".cards-list", cardShow)
   },
 
 	deleteCard: function () {
@@ -65,10 +65,7 @@ Trello.Views.ListItem = Backbone.CompositeView.extend({
 				return subview.model === cardToDelete
 			}
 		)
-
-
 		this.removeSubview('.card', subview)
-
 	},
 
 

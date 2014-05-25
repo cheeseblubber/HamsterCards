@@ -14,7 +14,6 @@ Trello.Views.CardItem = Backbone.View.extend({
 		"mouseover": "showFeatures",
 		"mouseleave": "hideFeatures",
 		"click .card": "showModal",
-		// "click .float-right-button": "deleteCard",
 	},
 
 	render: function () {
