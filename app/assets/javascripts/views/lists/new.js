@@ -1,21 +1,27 @@
 Trello.Views.newList = Backbone.CompositeView.extend({
   template: JST["lists/new"],
 
+	tagName: "li",
+
   events: {
     // "submit form": "submit",
   	"click .save": "save",
 		"click .cancel": "cancel",
 	},
 
-	cancel: function () {
-
-	},
-
   render: function (){
+		// $('body').on('click', this.remove);
     var renderedContent = this.template({ board: this.model });
     this.$el.html(renderedContent);
     return this;
   },
+
+	// remove: function () {
+	// 	$('body').off('click', this.remove);
+	//
+	// 	this.$el.remove();
+	// 	return this;
+	// },
 
   save: function (event) {
     var view = this;

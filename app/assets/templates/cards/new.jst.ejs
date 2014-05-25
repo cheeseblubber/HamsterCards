@@ -1,16 +1,18 @@
-<form class="new-card panel">
-	<label>Card Name
+<div class="btn open-card-composer">Add a Card...</div>
+<form class="new-card panel hideable hidden dont-close" id="<%= list.escape('id') %>">
+	<label class="dont-close">Card Name
 		<input type="text" name="card[title]">
 	</label>
 	<br>
-	<label>Description
+	<label class="dont-close">Description
 		<input type="text" name="card[description]">
 	</label>
 	<br>
-	<label>Rank
+	<label class="dont-close">Rank
 		<input type="text" name="card[rank]">
 	</label>
 	<br>
 	<input type="hidden" name="card[list_id]" value="<%= list.escape("id") %>">
 	<input type="submit" class="btn btn-success add" value="Add">
+	<a class='close-form'>x</a>
 </form>
