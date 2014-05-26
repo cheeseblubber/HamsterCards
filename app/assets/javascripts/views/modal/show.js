@@ -11,8 +11,18 @@ Trello.Views.ModalItem = Backbone.CompositeView.extend({
 		// $('#cardDetails').modal('show')
 	},
 
+	initialize: function () {
+		this.listenTo( this.model.comments(), 'add', this.addComment)
+	},
+
 	events: {
-		"click .show-comment-form": 'showForm',
+		"click .show-comment-form": 'showDescriptionForm',
+		"submit form": "editDescription",
+		"click .add-comment-button": "saveComment",
+	},
+
+	test: function () {
+
 	},
 
 	teardown: function() {
@@ -20,17 +30,43 @@ Trello.Views.ModalItem = Backbone.CompositeView.extend({
     this.remove();
   },
 
-	showForm: function () {
+	showDescriptionForm: function () {
 		//refactor this to create a method
-		var parentIsForm = $(event.target).parents().is('form');
-		if( !parentIsForm){
-			this.toggleHideables('description')
-		}
-		// if($('.description').attr('class').indexOf('hidden') != 0 ){
+		$(event.target).hide("slow")
+		$('.description').toggleClass('hidden')
+		$('.description').blur(function () {
+				$('.description').toggleClass('hidden')
+		})
+		// $('.description').show()
+		// $('.description').blurr(function () {
+		// 	$('.description').hide('slow')
+		// })
+		// var parentIsForm = $(event.target).parents().is('form');
+		// var isModalOrParent = $(event.target).parents().is('modal-body') ||
+		// $(event.target).hasClass('modal-body') ;
+		// if( !parentIsForm && !isModalOrParent){
 		// 	this.toggleHideables('description')
-		// 	debugger
 		// }
+	},
 
+
+	//comeback to add comment form it is deleting weverything when it renders
+	addCommentForm: function () {
+		var commentFormView = new Trello.Views.newComment({ model: this.model })
+		// $('.comment-list').append(commentFormView.render().$el)
+		this.addSubview(".comment-form", commentFormView);
+	},
+
+	renderComments: function () {
+		var commentCollection = this.model.comments();
+		commentCollection.fetch();
+		commentCollection.each(this.addComment.bind(this));
+	},
+
+	addComment: function () {
+		var commentView = new Trello.Views.CommentItem({ model: this.model });
+		// $('.comment-list').append(commentView.render().$el)
+		this.addSubview(".comment-list", commentView);
 	},
 
 	render: function () {
@@ -39,7 +75,11 @@ Trello.Views.ModalItem = Backbone.CompositeView.extend({
 			card: this.model,
 			list: list
 		})
+		$('.hide-on-edit').notify('description')
 		this.$el.html(renderedContent)
+		this.addCommentForm();
+		this.renderComments(this.model)
+		this.attachSubviews();
 		this.$el.modal({show:false});
 		return this
 	},
@@ -51,9 +91,13 @@ Trello.Views.ModalItem = Backbone.CompositeView.extend({
 		$(event.target).toggleClass('revealable')
 	},
 
-  // _swapView: function(view){
-  //   this._currentView && this._currentView.remove();
-  //   this._currentView = view;
-  //   this.$rootEl.html(view.render().$el);
-  // },
+	editDescription: function () {
+		var that = this
+		event.preventDefault();
+		var body = this.$('.description-body').val();
+		this.model.set("description", body)
+		this.model.save({}, {
+			url: ('api/cards/' + this.model.id),
+		})
+	},
 })

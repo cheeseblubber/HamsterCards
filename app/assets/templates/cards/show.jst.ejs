@@ -1,4 +1,3 @@
-
 <div class="card-title">
 	<%= card.escape('title') %>
 	<!-- <button id="<%= card.id %>" type="button" class='close hidden float-right-button'>x</button> -->
@@ -8,6 +7,9 @@
 
 <% if(card.escape('description') != "") { %>
 	<span class="glyphicon glyphicon-pencil"></span>
+<% } %>
+<% if(card.escape('comments') != "") { %>
+		<span class="glyphicon glyphicon-comment"></span>
 <% } %>
 </div>
 <div class="add-modal"></div>

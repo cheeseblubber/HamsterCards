@@ -17,12 +17,13 @@ Trello.Views.CardForm = Backbone.View.extend({
   },
 
 	submit: function(event) {
-		var view = this;
+		var that = this;
 		event.preventDefault();
 
 		var data = { card: {
 			title: this.$('.title').val(),
-			description: this.$('.description').val(),
+			// description: this.$('.description').val(),
+			description: "",
 			rank: (this.list.cards().length + 1),
 			list_id: this.list.id,
 		}}
@@ -30,7 +31,7 @@ Trello.Views.CardForm = Backbone.View.extend({
 		this.list.cards().create(data, {
 			// without wait true card will not initially render
 			wait: true,
-			success: function (view) {
+			success: function (that) {
 				$('textarea').val('')
 				//clears the textarea out
 			}
