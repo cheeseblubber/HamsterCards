@@ -1,4 +1,4 @@
-Trello.Views.CardItem = Backbone.View.extend({
+Trello.Views.CardItem = Backbone.CompositeView.extend({
 
 	tagName: 'li',
 
@@ -16,9 +16,12 @@ Trello.Views.CardItem = Backbone.View.extend({
 		"click": "showModal",
 	},
 
+
+
 	render: function () {
     var content = this.template({ card: this.model });
     this.$el.html(content);
+		// this.addModal
     return this;
   },
 
@@ -30,9 +33,20 @@ Trello.Views.CardItem = Backbone.View.extend({
 		$(".close").addClass('hidden')
 	},
 
-	showModal: function () {
-
+	addModal: function () {
+		var that = this
+		var modalView = new Trello.Views.ModalItem({ model: that.model})
+		// that.addSubview(".add-modal", modalView)
+		$('body').append(modalView.render().$el)
+		this.modal = modalView
 	},
+
+	showModal: function () {
+		this.addModal()
+		this.modal.show()
+		// $('#cardDetails').modal('show');
+	},
+
 	// Moved this out to list
 	// deleteCard: function () {
 	// 	//hacked because of routes are different for different Create and delete
@@ -43,5 +57,7 @@ Trello.Views.CardItem = Backbone.View.extend({
 	// 	// debugger
 	// 	// this.model.destroy()
 	// },
+
+
 
 })
