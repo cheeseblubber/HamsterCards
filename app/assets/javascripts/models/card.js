@@ -2,7 +2,6 @@ Trello.Models.Card = Backbone.Model.extend({
 
   url: function () {
 		// return "api/cards/" + this.attributes.id
-		// debugger
 		if(!this.attributes.card){
 			return "api/lists/" +
 			this.attributes.list_id +
@@ -15,5 +14,12 @@ Trello.Models.Card = Backbone.Model.extend({
 		}
 
   },
+
+	comments: function () {
+		if(!this._comments){
+			this._comments = new Trello.Collections.Comments([], { model: this })
+		}
+		return this._comments
+	},
 
 });

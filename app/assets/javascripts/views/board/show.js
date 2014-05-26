@@ -35,8 +35,9 @@ Trello.Views.Board = Backbone.CompositeView.extend({
 
 	insideTheForm: function () {
 		var parentIsForm = $(event.target).parents().is('form');
-		if( !parentIsForm){
-			this.hideAndReveal();
+		// var parentIsModalBody = $(event.target).parents().is('modal-body');
+		if( !parentIsForm ){
+				this.hideAndReveal();
 		}
 	},
 

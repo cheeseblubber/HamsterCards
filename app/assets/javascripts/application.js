@@ -19,6 +19,8 @@
 //= require bootstrap
 //= require trello
 //= require jquery-sortable
+//= require jquery.qtip.min
+//= require notify
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

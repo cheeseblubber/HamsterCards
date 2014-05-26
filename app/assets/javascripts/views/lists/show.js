@@ -29,10 +29,6 @@ Trello.Views.ListItem = Backbone.CompositeView.extend({
 		this.remove();
 	},
 
-	addCard: function (list) {
-		var cardView = new Trello.Views.CardItem({ model: list})
-		this.addSubview(".cards-list", cardView)
-	},
 
 	showAddCardForm: function () {
 		// $('#'+ this.model.id).show()
@@ -49,10 +45,17 @@ Trello.Views.ListItem = Backbone.CompositeView.extend({
 		cardCollection.each(this.addCard.bind(this))
   },
 
+	addCard: function (list) {
+		var cardView = new Trello.Views.CardItem({ model: list})
+		this.addSubview(".cards-list", cardView)
+	},
+
+
 	deleteCard: function () {
 		var cardID = $(event.target).attr("id");
 		var cardToDelete = this.cards.get(cardID);
     //not using destroy because url is fucked up
+		//need to manually specify url in this case
 		//comeback to refactor
 		$.ajax({
       url: "api/cards/" + cardID,

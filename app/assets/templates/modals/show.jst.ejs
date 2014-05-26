@@ -14,15 +14,18 @@
 						</a>
 					<% }  else  {  %>
 						Description
-						<a class="hide-on-edit show-comment-form">Edit
-	        		<p><%= card.escape("description") %></p>
-						</a>
+						<a class="hide-on-edit show-comment-form">Edit</a>
 				<% } %>
-				<form class="description panel hideable hidden">
-						<textarea class="title" autofocus="autofocus"></textarea>
+			</div>
+				<form class="description panel hidden">
+						<textarea class="description-body" autofocus="autofocus"></textarea>
 					<input type="submit" class="btn btn-success add" value="Save">
 				</form>
-	      </div>
+				<p><%= card.escape("description") %></p>
+	      <!-- </div> -->
+				<h4>Activity</h4>
+				<div class="comment-form"></div>
+				<div class="comment-list"></div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	        <button type="button" class="btn btn-primary">Save changes</button>

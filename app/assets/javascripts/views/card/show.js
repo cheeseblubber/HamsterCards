@@ -16,8 +16,6 @@ Trello.Views.CardItem = Backbone.CompositeView.extend({
 		"click": "showModal",
 	},
 
-
-
 	render: function () {
     var content = this.template({ card: this.model });
     this.$el.html(content);
@@ -41,9 +39,12 @@ Trello.Views.CardItem = Backbone.CompositeView.extend({
 		this.modal = modalView
 	},
 
+
+
 	showModal: function () {
 		this.addModal()
 		this.modal.show()
+		// this.modal.teardown();
 		// $('#cardDetails').modal('show');
 	},
 
