@@ -43,6 +43,7 @@ Trello.Views.CardItem = Backbone.CompositeView.extend({
 
 	showModal: function () {
 		this.addModal()
+		this.model.comments().fetch()
 		this.modal.show()
 		// this.modal.teardown();
 		// $('#cardDetails').modal('show');

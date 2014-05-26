@@ -1,1 +1,2 @@
-<p><%= comment.escape("body") %></p>
+<p><%= comment.escape("body") %><br>
+<%= moment(comment.attributes.created_at).fromNow()  %></p>

@@ -15,11 +15,19 @@ Trello.Models.Card = Backbone.Model.extend({
 
   },
 
+	parse: function (resp) {
+		if(resp.comments) {
+			this.lists().set(resp.comments, {parse: true });
+			delete resp.comments;
+		}
+		return resp;
+	},
+
 	comments: function () {
 		if(!this._comments){
-			this._comments = new Trello.Collections.Comments([], { model: this })
-		}
-		return this._comments
+			this._comments = new Trello.Collections.Comments([], { card: this });
+		};
+		return this._comments;
 	},
 
 });

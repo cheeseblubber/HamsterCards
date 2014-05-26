@@ -18,6 +18,7 @@
 //= require backbone
 //= require bootstrap
 //= require trello
+//= require moment.min
 //= require jquery-sortable
 //= require jquery.qtip.min
 //= require notify
