@@ -176,6 +176,9 @@ textarea {
 //	border: none;
 }
 
+a {
+	cursor: pointer;
+}
 
 .panel {
 	background-color: #DBDBDB;
@@ -183,4 +186,8 @@ textarea {
 
 .glyphicon {
 	color: #B3B3B3;
+}
+
+.modal-backdrop {
+	z-index: 1020;
 }

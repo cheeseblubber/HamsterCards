@@ -60,16 +60,7 @@ Trello.Views.Board = Backbone.CompositeView.extend({
 				element.classList.toggle('active')
 			}
 		})
-		// $('.hideable'))
 	},
-
-	// revealRevealables: function () {
-	// 	var noneActive = $('.active').length === 0
-	// 	if(noneActive){
-	// 		debugger
-	// 		$('.revealable').removeClass('revealable');
-	// 	}
-	// },
 
 	showAddListForm: function() {
 		$(event.target).toggleClass('hidden');
