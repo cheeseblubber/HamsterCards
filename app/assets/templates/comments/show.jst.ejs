@@ -1,2 +1,2 @@
 <p><%= comment.escape("body") %><br>
-<%= moment(comment.attributes.created_at).fromNow()  %></p>
+<%= moment(comment.attributes.created_at).fromNow()  %> <a class="edit-comment" id="<%= comment.id %>">Edit</a> - <a class="delete-comment" id="<%= comment.id %>">Delete</a> </p>

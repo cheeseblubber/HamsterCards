@@ -1,7 +1,7 @@
 Trello.Views.ListItem = Backbone.CompositeView.extend({
   tagName: 'li',
 
-	className: 'list panel',
+	className: 'list panel single-list',
 
 	idAttribute: function () {
 		return this.model.id
