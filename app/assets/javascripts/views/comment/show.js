@@ -6,10 +6,10 @@ Trello.Views.CommentItem = Backbone.View.extend({
 
 	className: 'commentItem',
 
-	// events: {
-	// 	// "click .delete-comment": "deleteComment",
-	// 	// "click .edit-comment": "editComment"
-	// },
+	events: {
+		"click .delete-comment": "deleteComment",
+		// "click .edit-comment": "editComment"
+	},
 
 	render: function () {
 		var renderedContent = this.template({ comment: this.model})

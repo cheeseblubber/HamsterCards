@@ -26,6 +26,7 @@ Trello.Views.newComment = Backbone.View.extend({
 		this.model.comments().create(comment, {
 			success: function (){
 				$('textarea').val('')
+				comment.fetch()
 			}
 		})
 	},
