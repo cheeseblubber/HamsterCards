@@ -120,6 +120,22 @@ ol {
 	vertical-align: top;
 	list-style: none;
 }
+
+.cards-sortable {
+	position: relative;
+}
+
+.dragged-card {
+	transform: rotate(7deg);
+	-ms-transform: rotate(7deg);
+	-webkit-transform: rotate(7deg);
+}
+
+.list-sortable {
+	cursor: pointer;
+}
+
+
 .card {
 	padding-left: 0;
 	border-bottom: thin solid #B3B3B3;
@@ -135,6 +151,21 @@ ol {
 	border-radius: 7px;
 
 }
+
+.num-of-comments {
+	color: rgb(179, 179, 179);
+	cursor: pointer;
+	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	height: 18px;
+	line-height: 18px;
+	width: 7px;
+	color: #B3B3B3;
+}
+
 //
 .cards-list {
 	padding-bottom: 100p;
@@ -197,4 +228,23 @@ a {
 	background-image: linear-gradient(rgb(31, 147, 35) 0px, rgb(22, 105, 25) 100%);
 }
 
+.logo img {
+	background-position: 100% 0%;
+	background-repeat: no-repeat;
+	background-size: 20px 10px;
+	color: rgb(68, 68, 68);
+	cursor: pointer;
+	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	height: 30px;
+	line-height: 18px;
+	position: relative;
+	right: 0px;
+	text-align: center;
+	top: 0px;
+	width: 80px;
+}
 

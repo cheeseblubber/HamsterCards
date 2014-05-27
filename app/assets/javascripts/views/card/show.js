@@ -28,8 +28,12 @@ Trello.Views.CardItem = Backbone.CompositeView.extend({
 	// 		stack: ".cards-list",
 	// 	})
 	// },
+	initialize: function() {
+		this.listenTo(this.model.comments(), 'sync', this.render)
+	},
 
 	render: function () {
+
     var content = this.template({ card: this.model });
     this.$el.html(content);
 		// this.dragCard();
@@ -47,7 +51,6 @@ Trello.Views.CardItem = Backbone.CompositeView.extend({
 
 	addModal: function () {
 		var that = this
-		// debugger
 		var modalView = new Trello.Views.ModalItem({ model: that.model})
 		// that.addSubview(".add-modal", modalView)
 		$('body').append(modalView.render().$el)
@@ -58,7 +61,6 @@ Trello.Views.CardItem = Backbone.CompositeView.extend({
 
 	showModal: function () {
 		this.addModal()
-		this.model.comments().fetch()
 		this.modal.show()
 		// this.modal.teardown();
 		// $('#cardDetails').modal('show');

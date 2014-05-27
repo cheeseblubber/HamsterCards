@@ -8,8 +8,8 @@
 <% if(card.escape('description') != "") { %>
 	<span class="glyphicon glyphicon-pencil"></span>
 <% } %>
-<% if(card.escape('comments') != "") { %>
-		<span class="glyphicon glyphicon-comment"></span>
+<% if(card.comments().length != 0) { %>
+		<span class="glyphicon glyphicon-comment"></span> <span class="num-of-comments"><%= card.comments().length %></span>
 <% } %>
 </div>
 <div class="add-modal"></div>

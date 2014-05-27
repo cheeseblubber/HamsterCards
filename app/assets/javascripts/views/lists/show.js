@@ -20,7 +20,7 @@ Trello.Views.ListItem = Backbone.CompositeView.extend({
 		this.listenTo(
 			this.cards, 'add', this.addCard
 		);
-		this.listenTo(this.model, 'all', this.render);
+		// this.listenTo(this.model, 'all', this.render);
 		this.addCardForm(this.model);
 	},
 
@@ -45,8 +45,9 @@ Trello.Views.ListItem = Backbone.CompositeView.extend({
 		cardCollection.each(this.addCard.bind(this))
   },
 
-	addCard: function (list) {
-		var cardView = new Trello.Views.CardItem({ model: list})
+	addCard: function (card) {
+		card.comments().fetch()
+		var cardView = new Trello.Views.CardItem({ model: card})
 		this.addSubview(".cards-list", cardView)
 	},
 
