@@ -241,6 +241,15 @@ a {
 	text-align: center;
 	top: 0px;
 	cursor: pointer;
+	opacity:1;
+
+}
+
+.logo img:hover {
+	opacity:.9;
+//	-moz-box-shadow: 0 0 5px rgba(0,0,0,0.5);
+//	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.5);
+//	box-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 
 .comment-form {
@@ -429,4 +438,8 @@ h2 {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	word-wrap: break-word;
+}
+
+.description-body {
+	padding-left: 30px;
 }

@@ -6,12 +6,33 @@ Trello.Views.newComment = Backbone.View.extend({
 
 	events: {
 		"click .add-comment-button": "submit",
+		"click .show-new-comment-form": "showNewCommentForm",
 	},
 
 	render: function () {
 		var renderContent = this.template()
 		this.$el.html(renderContent);
+		this.$('.new-comment-form').hide();
 		return this;
+	},
+
+	showNewCommentForm: function () {
+		this.revealAndHide('.new-comment-form')
+
+	},
+
+	revealAndHide: function (selector) {
+		var $target = $(event.target)
+		$target.hide()
+		$(selector).show(function () {
+			$(".new-comment-input").focus();
+		})
+		// $('.new-comment-input').on('focusout', function () {
+		// 	if($(event.target).attr('class').indexOf('.new-comment-input') != 0){
+		// 		$(selector).hide()
+		// 		$target.show()
+		// 	}
+		// })
 	},
 
 	submit: function (event) {
