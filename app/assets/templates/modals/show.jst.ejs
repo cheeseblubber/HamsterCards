@@ -18,10 +18,12 @@
 				<% } %>
 			</div>
 				<form class="description">
-						<textarea class="description-body modal-textarea" autofocus="autofocus"></textarea>
+						<textarea class="description-body modal-textarea" autofocus="autofocus" placeholder="<%= card.escape('description') %>"></textarea>
 					<input type="submit" class="btn btn-success add" value="Save">
 				</form>
-				<p><%= card.escape("description") %></p>
+				<div class="description-body">
+					<p><%= card.escape("description") %></p>
+				</div>
 	      <!-- </div> -->
 				<h4>Activity</h4>
 				<div class="comment-form"></div>

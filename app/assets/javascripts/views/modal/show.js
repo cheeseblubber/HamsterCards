@@ -13,6 +13,7 @@ Trello.Views.ModalItem = Backbone.CompositeView.extend({
 
 	initialize: function () {
 		this.listenTo( this.model.comments(), 'add', this.addComment)
+		// this.listenTo(this.model, 'change', this.render)
 		this.addCommentForm();
 	},
 
@@ -53,10 +54,11 @@ Trello.Views.ModalItem = Backbone.CompositeView.extend({
 		$(selector).show(function () {
 			$(selector).focus();
 		})
-		$(selector).on('focusout', function () {
-			// $(selector).hide()
-			$target.show()
-		})
+		// $(selector).on('focusout', function () {
+		// 	if($(event.))
+		// 	$(selector).hide()
+		// 	$target.show()
+		// })
 	},
 
 
@@ -96,7 +98,6 @@ Trello.Views.ModalItem = Backbone.CompositeView.extend({
 			}
 		)
 		this.removeSubview('.commentItem', subview)
-
 	},
 
 
