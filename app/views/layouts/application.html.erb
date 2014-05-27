@@ -7,12 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav class="header-bar navbar navbar-default">
+  <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
-				<div class="logo"><%= image_tag("hamsterlogo.png")%></div>
+				<a href="#">
+					<div class="logo" ><%= image_tag("hamsterlogo.png")%></div>
+				</a>
         <a class="navbar-brand" href="#">Trellino</a>
       </div>
+
       <ul class="nav navbar-right nav-pills">
         <li>
           <% if logged_in? %>
@@ -20,6 +23,21 @@
 				      <button class="btn btn-primary" data-toggle="modal" data-target="#add-member">
 				        Add member
 				      </button>
+
+				</li>
+					<li>
+            <%= button_to "Log out", session_url, { method: :delete, class: "btn btn-warning" } %>
+					</li>
+
+          <% end %>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+
+
+  <%= yield %>
 				    <div class="modal fade" id="add-member" tableindex="-1" role="dialog" aria-labelleby="myModalLabel" aria-hidden="true">
 				      <div class="modal-dialog">
 				        <div class="modal-content">
@@ -41,20 +59,5 @@
 				      </div>
 				    </div>
 				  </div>
-				</li>
-					<li>
-            <%= button_to "Log out", session_url, { method: :delete, class: "btn btn-warning" } %>
-					</li>
-
-          <% end %>
-        </li>
-
-      </ul>
-    </div>
-  </nav>
-
-
-  <%= yield %>
-
 </body>
 </html>

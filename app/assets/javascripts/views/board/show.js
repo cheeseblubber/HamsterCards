@@ -9,7 +9,8 @@ Trello.Views.Board = Backbone.CompositeView.extend({
 		"mouseover": "showDeleteList",
 		"click .show-form": "showForm",
 		"click .hide-form": "hideForm",
-		"click .open-list-composer": "showAddListForm"
+		"click .open-list-composer": "showAddListForm",
+		// "click .logo": "redirectToIndex",
 	},
 
   initialize: function() {

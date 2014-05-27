@@ -1,12 +1,12 @@
 <div class="card-title">
 	<%= card.escape('title') %>
 	<!-- <button id="<%= card.id %>" type="button" class='close hidden float-right-button'>x</button> -->
-	<span class="glyphicon glyphicon-chevron-down close hidden float-right-button" ></span>
+	<span class="glyphicon glyphicon-chevron-down close hidden float-right-button" id="<%= card.escape('id') %>"></span>
 <br>
 <br>
 
 <% if(card.escape('description') != "") { %>
-	<span class="glyphicon glyphicon-pencil"></span>
+	<span class="glyphicon glyphicon-pencil" ></span>
 <% } %>
 <% if(card.comments().length != 0) { %>
 		<span class="glyphicon glyphicon-comment"></span> <span class="num-of-comments"><%= card.comments().length %></span>

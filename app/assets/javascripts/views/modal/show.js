@@ -30,25 +30,35 @@ Trello.Views.ModalItem = Backbone.CompositeView.extend({
     this.remove();
   },
 
+	// showDescriptionForm: function () {
+// 		//refactor this to create a method
+// 		var target = event.target
+// 		var parentIsForm = $(event.target).parents().is('form');
+// 		var isModalOrParent = $(event.target).parents().is('modal-body') ||
+// 		$(event.target).hasClass('modal-body') ;
+// 		if( !parentIsForm && !isModalOrParent){
+// 			this.toggleHideables('description')
+// 			$('.description-body').on('blur', function () {
+// 				$('.description').hide('slow')
+// 			})
+// 		}
+// 	},
 	showDescriptionForm: function () {
-		//refactor this to create a method
-		var target = event.target
-		var parentIsForm = $(event.target).parents().is('form');
-		var isModalOrParent = $(event.target).parents().is('modal-body') ||
-		$(event.target).hasClass('modal-body') ;
-		if( !parentIsForm && !isModalOrParent){
-			this.toggleHideables('description')
-			$('.description-body').on('blur', function () {
-				$('.description').hide('slow')
-			})
-		}
+		this.revealAndHide('.description');
 	},
 
-	// prependComment: function (comment) {
-	// 	var commentView = new Trello.Views.CommentItem({ model: comment});
-	// 	$('.comment-list').prepend(commentView.render().$el)
-	// 	// this.addSubview(".comment-list", commentView);
-	// },
+	revealAndHide: function (selector) {
+		var $target = $(event.target)
+		$target.hide()
+		$(selector).show(function () {
+			$(selector).focus();
+		})
+		$(selector).on('focusout', function () {
+			// $(selector).hide()
+			$target.show()
+		})
+	},
+
 
 	//comeback to add comment form it is deleting weverything when it renders
 	addCommentForm: function () {
@@ -65,6 +75,7 @@ Trello.Views.ModalItem = Backbone.CompositeView.extend({
 	addComment: function (comment) {
 		var commentView = new Trello.Views.CommentItem({ model: comment});
 		// $('.comment-list').append(commentView.render().$el)
+
 		this.addSubview(".comment-list", commentView);
 	},
 
@@ -78,15 +89,6 @@ Trello.Views.ModalItem = Backbone.CompositeView.extend({
 				console.log("it works")
 			},
 		});
-		// debugger
-		// this.model.comments().remove(commentToDelete, {
-		// 	success: function () {
-		// 		console.log("it works")
-		// 	},
-		// 	error: function () {
-		// 		console.log("it doesn't work")
-		// 	}
-		// })
 		var subview = _.find(
 			this.subviews(".comment-list"),
 			function (subview) {
@@ -106,6 +108,7 @@ Trello.Views.ModalItem = Backbone.CompositeView.extend({
 		})
 		// console.log(this.model.comments())
 		this.$el.html(renderedContent)
+		this.$el.find('.description').hide()
 		this.renderComments(this.model)
 		this.attachSubviews();
 		this.$el.modal({show:false});
