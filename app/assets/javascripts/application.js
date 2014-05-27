@@ -19,7 +19,7 @@
 //= require bootstrap
 //= require trello
 //= require moment.min
-//= require jquery-sortable
+//= require jquery-ui-1.10.4.custom
 //= require jquery.qtip.min
 //= require notify
 //= require_tree ../templates

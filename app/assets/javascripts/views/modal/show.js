@@ -59,8 +59,6 @@ Trello.Views.ModalItem = Backbone.CompositeView.extend({
 
 	renderComments: function () {
 		var commentCollection = this.model.comments();
-		commentCollection.fetch();
-		// debugger
 		commentCollection.each(this.addComment.bind(this));
 	},
 
@@ -74,7 +72,6 @@ Trello.Views.ModalItem = Backbone.CompositeView.extend({
 	deleteComment: function () {
 		var commentId = $(event.target).attr('id');
 		var commentToDelete = this.model.comments().where({id: parseInt(commentId)}).pop()
-		// debugger
 		commentToDelete.destroy({
 			url: ("api/cards/" + this.model.id + "/comments/" + commentId),
 			success: function () {
