@@ -36,7 +36,7 @@ html {
 #content {
   height: 100%;
 //  max-height:100%;
-  overflow: auto;
+//  overflow: auto;
 }
 
 .list {
@@ -112,10 +112,11 @@ ol {
 //	background-color: #DBDBDB;
 }
 
+
 .lists > li {
 	border-bottom: thin solid #B3B3B3;
 	display: inline-block;
-	overflow-x: scroll;
+//	overflow-x: scroll;
 	vertical-align: top;
 	list-style: none;
 }

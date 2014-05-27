@@ -30,10 +30,10 @@ module Api
     #   end
     # end
     #
-    # def destroy
-    #   Comment.find(params[:id]).try(:destory)
-    #   render json: nil
-    # end
+    def destroy
+      Comment.find(params[:id]).try(:destroy)
+      render json: nil
+    end
 
     private
 

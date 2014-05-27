@@ -12,15 +12,17 @@ Trello.Views.ModalItem = Backbone.CompositeView.extend({
 	},
 
 	initialize: function () {
-		// this.listenTo( this.model.comments(), 'sync', this.render)
 		this.listenTo( this.model.comments(), 'add', this.addComment)
+		this.addCommentForm();
 	},
 
 	events: {
 		"click .show-comment-form": 'showDescriptionForm',
 		"submit form": "editDescription",
 		"click .add-comment-button": "saveComment",
-		'hidden': 'teardown'
+		'hidden': 'teardown',
+		"click .delete-comment": "deleteComment",
+		"click .edit-comment": "editComment",
 	},
 
 	teardown: function() {
@@ -42,8 +44,11 @@ Trello.Views.ModalItem = Backbone.CompositeView.extend({
 		}
 	},
 
-
-
+	// prependComment: function (comment) {
+	// 	var commentView = new Trello.Views.CommentItem({ model: comment});
+	// 	$('.comment-list').prepend(commentView.render().$el)
+	// 	// this.addSubview(".comment-list", commentView);
+	// },
 
 	//comeback to add comment form it is deleting weverything when it renders
 	addCommentForm: function () {
@@ -65,6 +70,37 @@ Trello.Views.ModalItem = Backbone.CompositeView.extend({
 		this.addSubview(".comment-list", commentView);
 	},
 
+
+	deleteComment: function () {
+		var commentId = $(event.target).attr('id');
+		var commentToDelete = this.model.comments().where({id: parseInt(commentId)}).pop()
+		// debugger
+		commentToDelete.destroy({
+			url: ("api/cards/" + this.model.id + "/comments/" + commentId),
+			success: function () {
+				console.log("it works")
+			},
+		});
+		// debugger
+		// this.model.comments().remove(commentToDelete, {
+		// 	success: function () {
+		// 		console.log("it works")
+		// 	},
+		// 	error: function () {
+		// 		console.log("it doesn't work")
+		// 	}
+		// })
+		var subview = _.find(
+			this.subviews(".comment-list"),
+			function (subview) {
+				return subview.model === commentToDelete
+			}
+		)
+		this.removeSubview('.commentItem', subview)
+
+	},
+
+
 	render: function () {
 		var list = this.model.collection.list
 		var renderedContent = this.template({
@@ -73,7 +109,6 @@ Trello.Views.ModalItem = Backbone.CompositeView.extend({
 		})
 		// console.log(this.model.comments())
 		this.$el.html(renderedContent)
-		this.addCommentForm();
 		this.renderComments(this.model)
 		this.attachSubviews();
 		this.$el.modal({show:false});

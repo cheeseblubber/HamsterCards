@@ -85,22 +85,43 @@ Trello.Views.Board = Backbone.CompositeView.extend({
 
   cardsSortable: function(){
     var that = this;
-    this.$el.find('.cards-list').sortable({
-      axis: 'x,y',
-      // placeholder: 'ui-sortable-placeholder',
-      // forcePlaceholderSize: true,
-      // start: function(event, ui){
-      //   $(ui.item).toggleClass('dragged');
-      // },
-      // stop: function(event, ui){
-      //   $(ui.item).toggleClass('dragged');
-      // },
-      // update: function (event) {
-      //   var ids = $(event.target).sortable('toArray', { attribute: "data-id" });
-      //   that.updateListRanks(ids);
-      // },
-    })
+		this.$el.find('.lists').sortable({
+		      axis: 'x,y',
+		      // placeholder: 'ui-sortable-placeholder',
+		      // forcePlaceholderSize: true,
+		      start: function(event, ui){
+		        $(ui.item).toggleClass('dragged');
+		      },
+		      stop: function(event, ui){
+		        $(ui.item).toggleClass('dragged');
+		      },
+		      // update: function (event) {
+		      //   var ids = $(event.target).sortable('toArray', { attribute: "data-id" });
+		        // that.updateListRanks(ids);
+		    })
+		// this.$el.find('.cards').sortable({
+		// 	//     this.$el.find('.list-of-lists').sortable({
+		// 	// items: ".card",
+		// 	start: function (event, ui) {
+		// 		$(ui.item).toggleClass('dragging');
+		// 		// $(ui.item).toggleClass('')
+		// 	},
+			// stop: function (event, ui) {
+			// 	$(ui.item).toggleClass('dragging');
+			// },
+			// cursor: "move",
+			// cursorAt: { top: 0, left: 0, right: 0, bottom: 0},
+			// // connectWith: $('.cards-list'),
+			//       axis: 'x,y'
+			// // placeholder: "sortable",
+			// // cursorAt: { top: 0, left: 0 },
+			// // revert: 'invalid',
+			// // update: function (event, ui)
+			//       // tolerance: 'pointer',
+			//       // placeholder: "placeholder"
+			// // revert: true
   },
+
 
   render: function () {
     var view = this;
