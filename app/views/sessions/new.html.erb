@@ -18,4 +18,11 @@
     <input type="submit" class="btn btn-primary" value="Login">
     <a href="<%= new_user_url %>">New to Trellino?</a>
   </form>
+<br>
+	<form action="<%= session_url %>" method="post">
+		<%= auth_token_input %>
+		<input type="hidden" name="user[email]" value="guest">
+		<input type="hidden" name="user[password]" value="p4xpEjRRZsEVXSQxcAEW6Ch2">
+		<input type="submit" class="btn btn-primary guest-login-button" value="Guest User Login">
+	</form>
 </div>
