@@ -4,5 +4,5 @@
 		<br>
 		<%= comment.escape("body") %>
 	</p>
-</div><span class="white-text"><%= moment(comment.attributes.created_at).fromNow()  %></span> <a class="edit-comment white-text" id="<%= comment.id %>">Edit</a>-<a class="delete-comment white-text" id="<%= comment.id %>">Delete</a>
+</div><span class="white-text"><%= moment(comment.attributes.created_at).fromNow()  %></span><a class="delete-comment white-text" id="<%= comment.id %>">Delete</a>
 <br>

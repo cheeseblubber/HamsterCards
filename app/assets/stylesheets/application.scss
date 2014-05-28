@@ -10,6 +10,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require animate
  *= require_tree .
  */
 
@@ -134,6 +135,10 @@ ol {
 	cursor: pointer;
 }
 
+.add-list-form{
+	list-style: none;
+}
+
 
 .card {
 	padding-left: 0;
@@ -168,6 +173,7 @@ ol {
 //
 .cards-list {
 	padding-bottom: 100p;
+	min-height: 25px;
 	min-width: 230px;
 }
 
@@ -517,4 +523,8 @@ h2 {
 	width: 190px;
 	height: 40px;
 //	background-color: ;
+}
+
+.to-the-right {
+	margin-left: 17px;
 }
