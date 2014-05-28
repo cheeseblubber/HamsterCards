@@ -22,7 +22,6 @@ Trello.Views.ListItem = Backbone.CompositeView.extend({
 		);
 		// this.listenTo(this.model, 'all', this.render);
 		this.addCardForm(this.model);
-
 	},
 
 	deleteList: function () {
@@ -33,8 +32,9 @@ Trello.Views.ListItem = Backbone.CompositeView.extend({
 
 	showAddCardForm: function () {
 		// $('#'+ this.model.id).show()
-		$("#" + this.model.id).toggleClass("active")
-		$('#' + this.model.id).toggleClass('hidden')
+		$("." + this.model.id).toggleClass("active")
+		$('.' + this.model.id).toggleClass('hidden')
+		// debugger
 		$(event.target).toggleClass("hidden")
 		$(event.target).toggleClass("revealable")
 	},

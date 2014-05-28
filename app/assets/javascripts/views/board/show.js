@@ -21,13 +21,13 @@ Trello.Views.Board = Backbone.CompositeView.extend({
 		this.model.lists().each(this.addList.bind(this));
   },
 
-	showForm: function () {
-		$(".add-list-form").show()
-	},
-
-	hideForm: function () {
-		$(".add-list-form").hide()
-	},
+	// showForm: function () {
+	// 	$(".add-list-form").show()
+	// },
+	//
+	// hideForm: function () {
+	// 	$(".add-list-form").hide()
+	// },
 
 	// hideAndReveal: function () {
 	// 	this.hideHideables();

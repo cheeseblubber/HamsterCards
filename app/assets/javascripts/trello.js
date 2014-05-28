@@ -8,8 +8,9 @@ window.Trello = {
     var boards = new Trello.Collections.Boards();
     boards.fetch({
       success: function () {
-        new Trello.Routers.Router(boards, $rootEl);
+        var router = new Trello.Routers.Router(boards, $rootEl);
         Backbone.history.start();
+				// router.navigate('/sessions/new', {trigger: true})
       },
       error: function () {
         // alert("Failed to fetch(I am in Line 17 of trello.js)")

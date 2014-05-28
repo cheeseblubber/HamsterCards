@@ -7,16 +7,25 @@ Trello.Views.BoardsIndex = Backbone.View.extend({
   },
 
   events: {
-    'submit form': 'add'
+    'submit form': 'add',
+		'click .show-board-form': 'showBoardForm'
   },
 
   render: function () {
     var that = this;
-    that.$el.html(that.template({
+    this.$el.html(that.template({
       boards: that.collection
     }));
+		this.$el.find('.new-board-form').hide()
+
     return this;
   },
+
+	showBoardForm: function (){
+		$('.new-board-form').show('fast')
+		$('.show-board-form').hide('fast')
+
+	},
 
   add: function (event) {
     event.preventDefault();
