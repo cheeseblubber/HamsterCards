@@ -31,6 +31,7 @@ Trello.Views.CardItem = Backbone.CompositeView.extend({
 	// },
 	initialize: function() {
 		this.listenTo(this.model.comments(), 'sync', this.render)
+		this.listenTo(this.model, 'change', this.render)
 	},
 
 	render: function () {

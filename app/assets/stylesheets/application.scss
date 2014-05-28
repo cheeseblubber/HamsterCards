@@ -443,3 +443,47 @@ h2 {
 .description-body {
 	padding-left: 30px;
 }
+
+
+.trello-button-format {
+	-webkit-background-clip: border-box;
+	-webkit-background-origin: padding-box;
+	-webkit-background-size: auto;
+	-webkit-user-select: none;
+	background-attachment: scroll;
+	background-clip: border-box;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: linear-gradient(rgba(255, 255, 255, 0.298039) 0px, rgba(255, 255, 255, 0.2) 100%);
+	background-origin: padding-box;
+	background-size: auto;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	color: rgb(243, 243, 243);
+	cursor: pointer;
+	display: block;
+	float: left;
+	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: bold;
+	height: 37px;
+	line-height: 30px;
+	margin-right: 8px;
+	min-width: 30px;
+	padding-bottom: 0px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 0px;
+	position: relative;
+	text-decoration: none solid rgb(243, 243, 243);
+//	width: 122px;
+
+//	opacity:1.0;
+}
+
+.trello-button-format:hover {
+//	opacity:0.9;
+}
