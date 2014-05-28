@@ -29,6 +29,10 @@
             <%= button_to "Log out", session_url, { method: :delete, class: "btn trello-button-format" } %>
 					</li>
 
+					<% else  %>
+						<% link_to new_session_url %>
+
+
           <% end %>
         </li>
 

@@ -1,20 +1,31 @@
-<div class="Jumbotron">
-  <div class="container">
-    <h1> Index Boards </h1>
-    <ul class="media-list">
-    <% boards.each(function(board){ %>
-      <li ><a href="#/board/<%= board.escape("id") %>">
-          <%= board.escape("title") %></a></li>
-    <% }) %>
-    <ul>
 
-    <form class="form">
-      <label>New Board Title
-        <input type='text' name="board[title]">
-      </label>
-      <input  class="btn" type='Submit'>
-    </form>
-    <a href="#/board/new" class="btn">New Board </a>
-  </div>
+
+<h2>
+		 My Boards
+ </h2>
+<ul class="media-list">
+<% boards.each(function(board){ %>
+	<span class="board-button">
+ 		 <li ><a href="#/board/<%= board.escape("id") %>">
+      <%= board.escape("title") %></a></li>
+		</span>
+<% }) %>
+
+
+
+<ul>
+
+<br>
+<!-- <a href="#/board/new" class="btn">New Board </a> -->
+<span class="board-button show-board-form">
+	<a>Add a New Board</a>
+</span>
+<div class="new-board-form">
+	<form class="form">
+	  <!-- <label>New Board Title -->
+	    <input type='text' placeholder="Add a Board..." name="board[title]">
+	  <!-- </label> -->
+	  <input  class="btn" type='Submit'>
+	</form>
 </div>
 
