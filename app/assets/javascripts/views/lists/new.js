@@ -5,7 +5,7 @@ Trello.Views.newList = Backbone.CompositeView.extend({
 
   events: {
     // "submit form": "submit",
-  	"click .save": "save",
+  	"submit": "save",
 		"click .cancel": "cancel",
 	},
 

@@ -19,7 +19,6 @@ Trello.Views.CardForm = Backbone.View.extend({
 	submit: function(event) {
 		var that = this;
 		event.preventDefault();
-
 		var data = { card: {
 			title: this.$('.title').val(),
 			// description: this.$('.description').val(),

@@ -112,6 +112,7 @@ Trello.Views.Board = Backbone.CompositeView.extend({
 				start: function (event, ui){
 					$(ui.item).toggleClass('dragged-card')
 				},
+				dropOnEmpty: true,
 				// recieve: function (event, ui) {
 				// 	// var movedCardID = ui.item.data('id');
 				// },
@@ -119,7 +120,6 @@ Trello.Views.Board = Backbone.CompositeView.extend({
 				stop: function (event, ui) {
 					$(ui.item).toggleClass('dragged-card');
 					var movedCardID = ui.item.data('id');
-					var moved
 				},
 
 

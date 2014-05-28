@@ -25,8 +25,23 @@ Trello.Views.ListItem = Backbone.CompositeView.extend({
 	},
 
 	deleteList: function () {
+		// debugger
 		this.model.destroy();
 		this.remove();
+		// $(event.currentTarget).addClass('animated flipOutX');
+		// this.cards().each(function(card) {
+		//
+		// })
+		// setTimeout(function(){
+			// that.remove();
+		// }, 600)
+		// this.$el.find("list:animated").promise().done(function(){
+		// 	// debugger
+		// 	that.remove();
+		// })
+		// $(":animated").promise().done(function() {
+		// 	that.remove();
+		// })
 	},
 
 
@@ -40,7 +55,7 @@ Trello.Views.ListItem = Backbone.CompositeView.extend({
 	},
 
   renderCards: function (list) {
-    var that = this
+    var that = this;
     var cardCollection = this.cards;
     cardCollection.fetch()
 		cardCollection.each(this.addCard.bind(this))
