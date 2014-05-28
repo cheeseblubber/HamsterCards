@@ -20,13 +20,13 @@
         <li>
           <% if logged_in? %>
 					<li>
-				      <button class="btn btn-primary" data-toggle="modal" data-target="#add-member">
+				      <button class="btn trello-button-format" data-toggle="modal" data-target="#add-member">
 				        Add member
 				      </button>
 
 				</li>
 					<li>
-            <%= button_to "Log out", session_url, { method: :delete, class: "btn btn-warning" } %>
+            <%= button_to "Log out", session_url, { method: :delete, class: "btn trello-button-format" } %>
 					</li>
 
           <% end %>
@@ -45,7 +45,7 @@
 				          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				          <h4 class="modal-title" id="myModalLabel">Add Member</h4>
 				            <div class="modal-body">
-				              <form class="add-member">
+				              <form class="add-member trello-button-format">
 				                <label>Enter the member's Email
 				                  <input type="text" name="newMemberEmail">
 				                </label>

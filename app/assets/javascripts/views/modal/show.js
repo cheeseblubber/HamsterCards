@@ -55,6 +55,7 @@ Trello.Views.ModalItem = Backbone.CompositeView.extend({
 			$(selector).focus();
 		})
 		// $(selector).on('focusout', function () {
+		// 	debugger
 		// 	if($(event.))
 		// 	$(selector).hide()
 		// 	$target.show()
