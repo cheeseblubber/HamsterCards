@@ -1,9 +1,13 @@
 
 <h4 class="list-title">
-	<%= list.escape('title') %>
+	<div class="title-text"><%= list.escape('title') %></div>
 	<span class="glyphicon glyphicon-remove delete-list float-right-button "></span>
 	<!-- <button class="btn btn-error delete-list">x</button> -->
 </h4>
+<form class="edit-title-input">
+	<input type='text' placeholder="<%= list.escape('title') %>" class="change-title">
+	<input type="submit" class="btn btn-success add" value="Edit">
+</form>
 <ol class="cards-list cards-sortable">
 </ol>
 

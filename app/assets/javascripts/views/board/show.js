@@ -10,6 +10,7 @@ Trello.Views.Board = Backbone.CompositeView.extend({
 		"click .show-form": "showForm",
 		"click .hide-form": "hideForm",
 		"click .open-list-composer": "showAddListForm",
+		"click .delete-board": "deleteBoard",
 		// "click .logo": "redirectToIndex",
 	},
 

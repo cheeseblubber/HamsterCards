@@ -119,6 +119,7 @@ ol {
 //	overflow-x: scroll;
 	vertical-align: top;
 	list-style: none;
+	width: 250px;
 }
 
 .cards-sortable {
@@ -444,6 +445,7 @@ h2 {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	word-wrap: break-word;
+	padding-left: 6px;
 }
 
 .description-body {
@@ -527,4 +529,25 @@ h2 {
 
 .to-the-right {
 	margin-left: 17px;
+}
+
+.edit-title-input {
+	padding-left: 6px;
+}
+
+.title-text {
+	display: inline-block;
+}
+
+.delete-board {
+	position: inline-block;
+	float: right;
+	margin-top: 17px;
+}
+.board-title {
+	display: inline-block;
+}
+
+h2 {
+	display: inline-block;
 }
