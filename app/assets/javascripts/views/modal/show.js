@@ -131,6 +131,12 @@ Trello.Views.ModalItem = Backbone.CompositeView.extend({
 		this.model.set("description", body)
 		this.model.save({}, {
 			url: ('api/cards/' + this.model.id),
+			success: function () {
+				$('.description-body').html(body)
+				$('.hide-on-edit').show('slow')
+				$('.description').hide('slow')
+				$
+			},
 		})
 	},
 })
