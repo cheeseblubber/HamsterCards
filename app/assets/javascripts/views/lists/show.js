@@ -14,7 +14,7 @@ Trello.Views.ListItem = Backbone.CompositeView.extend({
 		"click .float-right-button": "deleteCard",
 		"click .open-card-composer": "showAddCardForm",
 		"click .list-title": "showEditForm",
-		"submit form": "editTitle",
+		"submit form.edit-title-input": "editTitle",
 	},
 
 	initialize: function () {
