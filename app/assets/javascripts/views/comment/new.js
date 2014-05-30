@@ -24,7 +24,6 @@ Trello.Views.newComment = Backbone.View.extend({
 	revealAndHide: function (selector) {
 		var $target = $(event.target)
 		$target.hide()
-		console.log($target)
 		$(selector).show(function () {
 			$(".new-comment-input").focus();
 		})
@@ -49,8 +48,8 @@ Trello.Views.newComment = Backbone.View.extend({
 			success: function (){
 				$('textarea').val('')
 				comment.fetch()
-				$('.new-comment-form').hide('slow')
-				$('.show-new-comment-form').show('slow')
+				$('.new-comment-form').hide()
+				$('.show-new-comment-form').show()
 
 			}
 		})
