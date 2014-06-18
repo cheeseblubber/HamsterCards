@@ -5,10 +5,12 @@
  </h2>
 <ul class="media-list">
 <% boards.each(function(board){ %>
-	<span class="board-button">
- 		 <li ><a href="#/board/<%= board.escape("id") %>">
-      <%= board.escape("title") %></a></li>
-		</span>
+  <a href="#/board/<%= board.escape("id") %>">
+  	<span class="board-button" >
+   		 <li class="board_title">
+        <%= board.escape("title") %></li>
+  		</span>
+    </a>
 <% }) %>
 
 
